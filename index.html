@@ -1,0 +1,1265 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Mehrwerk — Register eines Ortes für Reparatur, Paketposthalle München
+    </title>
+    <meta
+      name="description"
+      content="Mehrwerk führt die Münchner Reparaturszene an einem Ort zusammen: 24-Stunden-Werkstatt, Bühne für Formate, Verteiler zu bestehenden Initiativen — in einem Baukörper, der sich auf- und zuklappen lässt."
+    />
+    <meta
+      property="og:title"
+      content="Mehrwerk — ein Ort für Reparatur in der Paketposthalle"
+    />
+    <meta
+      property="og:description"
+      content="Werkstatt, Bühne und Verteiler in einem. Das vollständige Verzeichnis in acht Positionen."
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 476 441'%3E%3Crect width='476' height='441' fill='%2314181D'/%3E%3Cpath d='M398.6 440.5L293 285.4v152.5H0V234l81.3-58.6 120.9 34.2v-33.6h122.5L476 391l-77.4 49.4ZM14 424h265.1V244.4h-77V224.2L84 190.7 14 241.2V424Zm279-163.6 109.6 161 53.7-34.3L317.4 190h-101.3v40.4h76.8v30Z' fill='%23FAFAFA'/%3E%3Cpath d='m379.2 123.6-93.3-17.9-93.3 17.9L286 0l93.3 123.6Zm-93.3-32.1 60.3 11.5-60.3-79.9-60.3 79.9 60.3-11.5Z' fill='%23FAFAFA'/%3E%3C/svg%3E"
+    />
+    <!-- General Sans über die Fontshare-API statt selbst gehostet: die
+         Fontshare-Lizenz erlaubt die Auslieferung über ihre eigenen Server,
+         die Ablage der Fontdatei in einem öffentlichen Repo nicht. -->
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@1&display=swap"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--
+THESIS: Mehrwerk ist fertig durchdacht — also tritt die Seite als Bauteilverzeichnis auf,
+nicht als Landingpage. Acht nummerierte Positionen mit Kopf, Kurzspec und Belegmaterial.
+Sie beweist Vollständigkeit durch ihre Form, statt sie zu behaupten. Verweigert wird der
+Stapel gleichförmiger Sektionen mit Überschrift, Vorspann, Bild.
+OWN-WORLD: Die gedruckte Außenhaut des Baus, ins Web gezogen. Dunkelgrau als Registerrücken,
+Petrol/Gelb/Rot als Besitzfarbe je Kategorie-Position. Aufgerissene Konturlettern,
+Signal-Rot-Chevrons als durchgehende Wegmarke, tabellarische Positionsziffern, Keylines.
+Belegmaterial sind die Renderings der einzelnen Gebäudeseiten, nicht flache Artworkplatten.
+STORY: das ist die Idee → das steckt drin → so verwandelt sich der Bau → deshalb diese
+Halle → das steht, das fehlt → reden wir.
+FIRST VIEWPORT: Dunkles Deckblatt. Die gezeichnete Wortmarke in Signal Rot, darunter die
+Beschreibung in zwei Absätzen, eine Chevronreihe, der Titelblock und das Verzeichnis 01–08.
+POSITION EINS IST DIE IDEE, nicht der Baukörper: was Mehrwerk ausmacht, ist das
+Zusammenführen bestehender Initiativen an einem Ort.
+JEDE POSITION HAT IHRE EIGENE TOPOLOGIE: der Kopf bleibt klebend stehen, der Inhalt zieht
+darüber hinweg; nur 02 trägt dabei eine Farbfläche.
+FORM: Bauteilverzeichnis — Kandidat 7 der geordneten Strukturliste. Seed cea12b9c.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <symbol id="chev" viewBox="0 0 120 40">
+        <path
+          d="M0 0l18 20-18 20h22l18-20L22 0zM40 0l18 20-18 20h22l18-20L62 0zM80 0l18 20-18 20h22l18-20L102 0z"
+          fill="currentColor"
+        />
+      </symbol>
+    </svg>
+
+    <a class="skip" href="#pos-00">Zum Inhalt springen</a>
+
+    <header class="leiste">
+      <a
+        class="leiste__plate"
+        href="#pos-00"
+        aria-label="Mehrwerk — Anfang des Registers"
+      >
+        <img src="assets/wortmarke-white-fill.svg" alt="" />
+      </a>
+
+      <p class="leiste__stand" aria-live="polite">
+        <span class="leiste__nr" data-spur-nr>00</span>
+        <span class="leiste__titel" data-spur-titel>Deckblatt</span>
+      </p>
+
+      <nav class="spur" aria-label="Verzeichnis">
+        <a href="#pos-00" data-spur-tick><span>00</span></a>
+        <a href="#pos-01" data-spur-tick><span>01</span></a>
+        <a href="#pos-02" data-spur-tick><span>02</span></a>
+        <a href="#pos-03" data-spur-tick><span>03</span></a>
+        <a href="#pos-04" data-spur-tick><span>04</span></a>
+        <a href="#pos-05" data-spur-tick><span>05</span></a>
+        <a href="#pos-06" data-spur-tick><span>06</span></a>
+        <a href="#pos-07" data-spur-tick><span>07</span></a>
+        <a href="#pos-08" data-spur-tick><span>08</span></a>
+      </nav>
+
+      <a class="leiste__cta" href="#pos-08">Kontakt</a>
+    </header>
+
+    <main>
+      <!-- ═══════════ POS 00 · DECKBLATT ═══════════ -->
+      <section
+        class="pos deck"
+        id="pos-00"
+        data-pos="00"
+        data-titel="Deckblatt"
+      >
+        <div class="deck__blatt">
+          <div class="deck__fuss">
+            <img class="deck__marke" src="assets/wortmarke-red-contour.svg" />
+            <p class="deck__these">
+              Mehrwerk ist ein Ort für Reparatur: eine Werkstatt, die rund um
+              die Uhr offensteht, eine Bühne für die Formate der Münchner
+              Reparaturszene und ein Verteiler zu den Initiativen, die es in der
+              Stadt längst gibt. Untergebracht in einem Baukörper, der sich auf-
+              und zuklappen lässt.
+            </p>
+            <div class="deck__unten">
+              <p class="deck__ort">
+                Die Paketposthalle scheint dafür gemacht. Ihr Erdgeschoss wird
+                ein frei zugänglicher Stadtplatz ohne Konsumzwang — und in der
+                Bürgerbeteiligung „Alle für die Halle“ standen Repair-Café,
+                DIY-Werkstatt und Bibliothek der Dinge ausdrücklich auf der
+                Wunschliste.
+              </p>
+              <dl class="titelblock">
+                <div>
+                  <dt>Gegenstand</dt>
+                  <dd>Ein Ort für Reparatur und Produktlanglebigkeit</dd>
+                </div>
+                <div>
+                  <dt>Ort</dt>
+                  <dd>Paketposthalle München, Erdgeschoss</dd>
+                </div>
+                <div>
+                  <dt>Bestand</dt>
+                  <dd>Konzept, Gestaltung und Modell vollständig</dd>
+                </div>
+                <div>
+                  <dt>Urheber</dt>
+                  <dd>Jakob Wankmüller · HfG Schwäbisch Gmünd, 2024</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div class="marsch" data-marsch aria-hidden="true">
+          <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+          <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+          <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+          <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+          <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+          <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+          <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+          <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        </div>
+
+        <div class="deck__unten-index">
+          <div class="deck__index">
+            <ol class="index">
+              <li>
+                <a href="#pos-01"
+                  ><b>01</b><span>Die Idee</span
+                  ><i>Zusammenführen statt konkurrieren</i></a
+                >
+              </li>
+              <li>
+                <a href="#pos-02"
+                  ><b>02</b><span>MEHR Werkstatt</span
+                  ><i>Werkzeug rund um die Uhr</i></a
+                >
+              </li>
+              <li>
+                <a href="#pos-03"
+                  ><b>03</b><span>MEHR Events</span
+                  ><i>Acht ausformulierte Formate</i></a
+                >
+              </li>
+              <li>
+                <a href="#pos-04"
+                  ><b>04</b><span>MEHR Projekte</span
+                  ><i>Der Verteiler in die Szene</i></a
+                >
+              </li>
+            </ol>
+          </div>
+          <div class="deck__index">
+            <ol class="index">
+              <li>
+                <a href="#pos-05"
+                  ><b>05</b><span>Der Baukörper</span
+                  ><i>Acht Zustände zwischen zu und offen</i></a
+                >
+              </li>
+              <li>
+                <a href="#pos-06"
+                  ><b>06</b><span>Der Standort</span
+                  ><i>20.000 m² unter einem Dach</i></a
+                >
+              </li>
+              <li>
+                <a href="#pos-07"
+                  ><b>07</b><span>Der Stand</span
+                  ><i>Was vorhanden ist, was offen ist</i></a
+                >
+              </li>
+              <li>
+                <a href="#pos-08"
+                  ><b>08</b><span>Kontakt</span><i>Lass uns quatschen</i></a
+                >
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <div class="marsch marsch--trenner" data-marsch aria-hidden="true">
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+      </div>
+
+      <!-- ═══════════ POS 01 · DIE IDEE ═══════════ -->
+      <section
+        class="pos kat kat--idee"
+        id="pos-01"
+        data-pos="01"
+        data-titel="Die Idee"
+      >
+        <div class="kat__kopf kat__kopf--offen" data-nr="01">
+          <h2 class="kopf"><span class="kopf__nr">01</span> Die Idee</h2>
+          <p class="spec">
+            verstärken statt konkurrieren · ein Ort statt vieler Adressen
+          </p>
+          <p class="setzung">
+            Mehrwerk ist kein weiteres Repair Café. Es ist der Ort, an dem die
+            sichtbar werden, die es schon gibt.
+          </p>
+        </div>
+
+        <div class="kat__lauf">
+          <div class="platte">
+            <div class="lauf">
+              <figure class="seite">
+                <img
+                  src="assets/seite-gesamt.webp"
+                  alt="Rendering des geöffneten Baukörpers auf einem Platz: die Automatenseite mit dem Schriftzug Machs Selbst, daneben die Wortmarke MEHR WERK, rechts die Treppe zur Aussichtsplattform, Menschen davor."
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <b>01.a</b> Der Ort im Betrieb. Alle vier Außenseiten tragen
+                  ihren eigenen Einstieg.
+                </figcaption>
+              </figure>
+
+              <div class="lauf__text">
+                <div class="fliess">
+                  <p>
+                    Reparaturangebote gibt es in München längst — Repair Cafés,
+                    offene Werkstätten, Initiativen, die das seit Jahren tragen.
+                    Das Problem liegt weniger im Angebot als in der
+                    Aufmerksamkeit: Wer nicht ohnehin in der Szene ist, erfährt
+                    nie davon.
+                  </p>
+                  <p>
+                    Deshalb konkurriert Mehrwerk nicht um dieselben
+                    Ehrenamtlichen, sondern stellt sich vor die bestehenden
+                    Initiativen und führt sie an einem Ort zusammen. Ein Platz
+                    mitten im Publikum, an dem Reparatur nicht gesucht werden
+                    muss, sondern im Weg steht.
+                  </p>
+                </div>
+
+                <dl class="gegen">
+                  <div>
+                    <dt>Keine zweite Werkstatt neben den bestehenden</dt>
+                    <dd>
+                      Sondern eine Fläche, auf der die bestehenden auftreten
+                      können — mit einem Publikum, das sie sonst nicht
+                      erreichen.
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Keine Konkurrenz um Ehrenamtliche</dt>
+                    <dd>
+                      Sondern ein Ort, an dem Ehrenamt sichtbar wird und deshalb
+                      leichter neue Leute findet.
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Kein neues Programm neben den vorhandenen</dt>
+                    <dd>
+                      Sondern Fläche, Technik und Publikum für die Formate, die
+                      die Initiativen ohnehin können.
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="hinweis">
+        <p>
+          <b>Hinweis zu 02 bis 05.</b> Die folgenden Positionen beschreiben das
+          ausgearbeitete Konzept aus der Bachelorarbeit — Räume, Formate und
+          Abläufe sind durchgeplant und gestaltet. Gebaut ist davon noch nichts.
+        </p>
+      </div>
+
+      <!-- ═══════════ POS 02 · MEHR WERKSTATT ═══════════ -->
+      <section
+        class="pos kat kat--werkstatt"
+        id="pos-02"
+        data-pos="02"
+        data-titel="MEHR Werkstatt"
+      >
+        <div class="kat__kopf" data-nr="02">
+          <h2 class="kopf">
+            <span class="kopf__nr">02</span>
+            <span class="kontur">MEHR</span> Werkstatt
+          </h2>
+          <p class="setzung">
+            Werkzeug, Platz und Strom, rund um die Uhr, ohne dass jemand
+            aufschließen muss.
+          </p>
+        </div>
+
+        <div class="kat__lauf">
+          <div class="platte">
+            <div class="lauf">
+              <figure class="seite">
+                <img
+                  src="assets/seite-werkstatt.webp"
+                  alt="Rendering der Werkstattseite: die aufgeklappte Wand gibt den Arbeitsplatz frei, ein Fahrrad steht im Ständer, darüber der Schriftzug Deine Werkstatt in Kontur."
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <b>02.a</b> Die Werkstattseite, aufgeklappt
+                </figcaption>
+              </figure>
+
+              <ol class="teile teile--liste">
+                <li>
+                  <p class="teile__nr">02.1</p>
+                  <h3>Werkstation</h3>
+                  <p>
+                    Arbeitsplatz mit Werkzeugwand, Beleuchtung und Strom. Das
+                    Werkzeug ist beschriftet, damit auch findet, wer es nicht
+                    kennt.
+                  </p>
+                </li>
+                <li>
+                  <p class="teile__nr">02.2</p>
+                  <h3>Ausleihe</h3>
+                  <p>
+                    Werkzeugkästen aus einem Automaten, freigeschaltet über die
+                    Chipkarte der Stadtbibliothek. Kein eigenes Konto nötig —
+                    die Karte haben viele ohnehin schon.
+                  </p>
+                </li>
+                <li>
+                  <p class="teile__nr">02.3</p>
+                  <h3>Endstation</h3>
+                  <p>
+                    Für Geräte, die niemand mehr rettet: prüfen, festhalten,
+                    erinnern. Was brauchbar ist, wandert zurück in den
+                    Kreislauf.
+                  </p>
+                </li>
+              </ol>
+            </div>
+
+            <div class="paar">
+              <figure>
+                <img
+                  src="assets/innenraum.webp"
+                  alt="Innenraum der Werkstation: Werkzeugwand mit beschrifteten Werkzeugen, rote und gelbe Werkbänke, Beschriftung Werkstation und Endstation."
+                  width="1600"
+                  height="900"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <b>02.b</b> Werkzeugwand und Endstation im Innenraum
+                </figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="assets/werkzeugkasten.webp"
+                  alt="Der Werkzeugkasten aus dem Ausleihautomaten, geöffnet mit sortiertem Inhalt."
+                  width="1400"
+                  height="788"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <b>02.c</b> Ausleihkasten, Inhalt sortiert und beschriftet
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="marsch marsch--trenner" data-marsch aria-hidden="true">
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+      </div>
+
+      <!-- ═══════════ POS 03 · MEHR EVENTS ═══════════ -->
+      <section
+        class="pos kat kat--events"
+        id="pos-03"
+        data-pos="03"
+        data-titel="MEHR Events"
+      >
+        <div class="kat__kopf kat__kopf--offen" data-nr="03">
+          <h2 class="kopf">
+            <span class="kopf__nr">03</span>
+            <span class="kontur">MEHR</span> Events
+          </h2>
+          <p class="setzung">
+            Acht ausformulierte Formate — bespielt von denen, die das ohnehin
+            können.
+          </p>
+        </div>
+
+        <div class="kat__lauf">
+          <div class="platte">
+            <div class="lauf">
+              <figure class="seite">
+                <img
+                  src="assets/seite-events.webp"
+                  alt="Rendering der Eventseite: die Tafel mit der Frage Was macht das Reparieren eigentlich so toll?, daneben die rote Fläche Guck mal durch und die Treppe zur Plattform."
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <b>03.a</b> Die Eventseite. Die Argumentation steht am
+                  Gebäude, nicht in einem Flyer.
+                </figcaption>
+              </figure>
+
+              <div class="lauf__text">
+                <div class="brett">
+                  <div class="brett__kopf" aria-hidden="true">
+                    <span>Pos</span><span>Format</span>
+                  </div>
+                  <ol class="brett__zeilen">
+                    <li><b>03.1</b><span>Outdoor-Repair-Café</span></li>
+                    <li>
+                      <b>03.2</b><span>Komm vorbei, nimm’s auseinander</span>
+                    </li>
+                    <li>
+                      <b>03.3</b><span>Lass mich das für dich googlen</span>
+                    </li>
+                    <li><b>03.4</b><span>Upgrade your Workshop</span></li>
+                    <li><b>03.5</b><span>Reparieren mit 3D-Druck</span></li>
+                    <li><b>03.6</b><span>Kreatives Upcycling</span></li>
+                    <li><b>03.7</b><span>Familienwerkstatt</span></li>
+                    <li><b>03.8</b><span>Repair-Festival</span></li>
+                  </ol>
+                  <p class="brett__fuss">
+                    Offene Formate laufen ohne Anmeldung, vertiefende Kurse mit.
+                  </p>
+                </div>
+
+                <p class="nachsatz">
+                  Bespielt wird nicht von Mehrwerk selbst, sondern von den
+                  Initiativen, die diese Formate ohnehin veranstalten. Der Ort
+                  stellt die Fläche, die Technik und das Publikum.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="marsch marsch--trenner" data-marsch aria-hidden="true">
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+      </div>
+
+      <!-- ═══════════ POS 04 · MEHR PROJEKTE ═══════════ -->
+      <section
+        class="pos kat kat--projekte"
+        id="pos-04"
+        data-pos="04"
+        data-titel="MEHR Projekte"
+      >
+        <div class="kat__kopf kat__kopf--offen" data-nr="04">
+          <h2 class="kopf">
+            <span class="kopf__nr">04</span>
+            <span class="kontur">MEHR</span> Projekte
+          </h2>
+          <p class="setzung">
+            Was hier repariert wird, bleibt sichtbar und führt weiter zu denen,
+            die schon lange helfen.
+          </p>
+        </div>
+
+        <div class="kat__lauf">
+          <div class="platte">
+            <div class="lauf">
+              <figure class="seite">
+                <img
+                  src="assets/seite-projekte.webp"
+                  alt="Rendering der Automatenseite aus der Nähe: die schwarze Tafel Machs Selbst mit dem Ausleihautomaten, daneben die Wortmarke MEHR WERK und die rote Fläche Guck mal durch."
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <b>04.a</b> Die Automatenseite mit dem Einstieg in den
+                  digitalen Layer.
+                  <strong
+                    >Der digitale Layer und der Reparatur-Assistent RUPERT sind
+                    ausgearbeiteter Konzeptbestandteil — gebaut ist beides
+                    nicht.</strong
+                  >
+                </figcaption>
+              </figure>
+
+              <ol class="teile teile--liste">
+                <li>
+                  <p class="teile__nr">04.1</p>
+                  <h3>Weiterleiten</h3>
+                  <p>
+                    Von der eigenen Reparatur zu den Repair Cafés, Werkstätten
+                    und Initiativen in der Nachbarschaft. Mehrwerk ist der
+                    Verteiler, nicht die Endstation.
+                  </p>
+                </li>
+                <li>
+                  <p class="teile__nr">04.2</p>
+                  <h3>Zeigen</h3>
+                  <p>
+                    Reparierte Dinge und ihre Geschichte. Nicht als
+                    Vorher-Nachher, sondern als Beleg, dass es geht.
+                  </p>
+                </li>
+              </ol>
+            </div>
+
+            <div class="paar">
+              <figure>
+                <img
+                  src="assets/modell-6.webp"
+                  alt="Gedruckte Schlüsselanhänger in Form kleiner Figuren mit blauen QR-Anhängern, verstreut auf weißem Grund."
+                  width="1600"
+                  height="1066"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <b>04.b</b> Anhänger mit Code: ein repariertes Ding trägt
+                  seine Geschichte mit
+                </figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="assets/modell-3.webp"
+                  alt="Modelldetail: die Tafel mit der Aufschrift Machs Selbst und der Frage Du weißt nicht wie du anfangen sollst."
+                  width="1600"
+                  height="1066"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <b>04.c</b> Die Einstiegstafel am Modell
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="marsch marsch--trenner" data-marsch aria-hidden="true">
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+      </div>
+
+      <!-- ═══════════ POS 05 · DER BAUKÖRPER ═══════════ -->
+      <section
+        class="pos bau"
+        id="pos-05"
+        data-pos="05"
+        data-titel="Der Baukörper"
+      >
+        <div class="platte">
+          <h2 class="kopf"><span class="kopf__nr">05</span> Der Baukörper</h2>
+          <p class="spec">
+            transformierbar · modular · vorgefertigt · selbsterklärend
+          </p>
+          <p class="lead">
+            Damit das alles auf einer Fläche stattfinden kann, die Mehrwerk
+            nicht allein gehört, ändert der Bau seinen Zustand. Zu ist er
+            kompakt genug, um nachts allein auf einem Platz zu stehen. Auf wird
+            daraus eine Werkstatt mit Vordach, Rampe und überdachter Fläche.
+          </p>
+          <dl class="tabelle">
+            <div>
+              <dt>Transformierbar</dt>
+              <dd>
+                Klappen, Rampe und Tribüne fahren aus. Für ein Festival wird der
+                Bau zur Bühne, danach wieder zur Werkstatt.
+              </dd>
+            </div>
+            <div>
+              <dt>Modular</dt>
+              <dd>
+                Aus vorgefertigten Elementen. Er lässt sich transportieren, an
+                anderer Stelle aufbauen und im Umfang anpassen.
+              </dd>
+            </div>
+            <div>
+              <dt>Auffällig</dt>
+              <dd>
+                Er sieht aus wie etwas, in das man hineingeht. Das ist keine
+                Kosmetik, sondern die Voraussetzung dafür, dass jemand stehen
+                bleibt.
+              </dd>
+            </div>
+            <div>
+              <dt>Selbsterklärend</dt>
+              <dd>
+                Die Außenflächen tragen die Anleitung. Wer davorsteht, weiß ohne
+                Personal, was drin passiert und wie man mitmacht.
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="folge" id="folge">
+          <div class="folge__buehne">
+            <ol class="folge__liste">
+              <li class="schritt">
+                <figure class="schritt__bild">
+                  <img
+                    src="assets/folge-1.webp"
+                    alt="Der Baukörper vollständig geschlossen auf einem gepflasterten Platz, Rampen ausgelegt, die Automatenseite mit dem Schriftzug Machs Selbst zugänglich."
+                    width="1000"
+                    height="562"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <div class="schritt__text">
+                  <p class="schritt__nr"><b>01</b><span>/ 08</span></p>
+                  <h3>Geschlossen</h3>
+                  <p>
+                    Außerhalb der Betriebszeiten steht Mehrwerk als kompakter
+                    Körper da. Die Automatenseite bleibt zugänglich — Werkzeug
+                    lässt sich rund um die Uhr ausleihen und zurückgeben. Die
+                    Außenflächen erklären auch im geschlossenen Zustand, was
+                    hier passiert.
+                  </p>
+                </div>
+              </li>
+
+              <li class="schritt">
+                <figure class="schritt__bild">
+                  <img
+                    src="assets/folge-2.webp"
+                    alt="Derselbe Baukörper, die Dachklappe ist angehoben und gibt ein Oberlicht frei, die Seitenwand steht offen und zeigt den Innenraum."
+                    width="1000"
+                    height="562"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <div class="schritt__text">
+                  <p class="schritt__nr"><b>02</b><span>/ 08</span></p>
+                  <h3>Die Dachklappe hebt sich</h3>
+                  <p>
+                    Die erste Bewegung geht nach oben. Das Oberlicht bringt
+                    Tageslicht auf die Werkbank, die Seitenwand gibt den
+                    Innenraum frei — bevor überhaupt eine Fläche nach außen
+                    ausgefahren ist.
+                  </p>
+                </div>
+              </li>
+
+              <li class="schritt">
+                <figure class="schritt__bild">
+                  <img
+                    src="assets/folge-3.webp"
+                    alt="Der Baukörper mit ausgefahrenem Vordach über dem Arbeitsbereich, links eine aufgeklappte beschriftete Informationstafel."
+                    width="1000"
+                    height="562"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <div class="schritt__text">
+                  <p class="schritt__nr"><b>03</b><span>/ 08</span></p>
+                  <h3>Vordach und Tafel</h3>
+                  <p>
+                    Die Seitenklappe fährt als Vordach aus und überdacht den
+                    Arbeitsbereich. Gleichzeitig schwenkt eine Informationstafel
+                    auf: beidseitig beschriftet, wird sie zur Wand des Raums,
+                    der gerade entsteht.
+                  </p>
+                </div>
+              </li>
+
+              <li class="schritt">
+                <figure class="schritt__bild">
+                  <img
+                    src="assets/folge-4.webp"
+                    alt="Der Baukörper mit Vordächern auf beiden Seiten, die Werkbank und der Ausleihautomat liegen an einer offenen, überdachten Fläche."
+                    width="1000"
+                    height="562"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <div class="schritt__text">
+                  <p class="schritt__nr"><b>04</b><span>/ 08</span></p>
+                  <h3>Beide Seiten offen</h3>
+                  <p>
+                    Mit der zweiten Klappe wird aus dem Körper ein Durchgang.
+                    Werkbank und Automat liegen jetzt an einer überdachten
+                    Fläche, die man von beiden Seiten betritt. Das ist der
+                    Zustand für einen normalen Betriebstag.
+                  </p>
+                </div>
+              </li>
+
+              <li class="schritt">
+                <figure class="schritt__bild">
+                  <img
+                    src="assets/folge-5.webp"
+                    alt="Blick von der gegenüberliegenden Seite: die geöffnete Werkstatt mit Werkbank, Werkzeugwand, Fahrradständer und zwei aufgeklappten Informationstafeln."
+                    width="1000"
+                    height="562"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <div class="schritt__text">
+                  <p class="schritt__nr"><b>05</b><span>/ 08</span></p>
+                  <h3>Die andere Seite</h3>
+                  <p>
+                    Dieselbe Situation von hinten: die Werkstattseite mit
+                    Werkbank, Werkzeugwand und Fahrradständer. Die aufgeklappten
+                    Tafeln bilden einen Hof, der den Arbeitsplatz gegen den
+                    Platz abschirmt, ohne ihn zu verschließen.
+                  </p>
+                </div>
+              </li>
+
+              <li class="schritt">
+                <figure class="schritt__bild">
+                  <img
+                    src="assets/folge-6.webp"
+                    alt="Dieselbe Ansicht, die seitlichen Informationstafeln sind eingeklappt, das Vordach steht noch."
+                    width="1000"
+                    height="562"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <div class="schritt__text">
+                  <p class="schritt__nr"><b>06</b><span>/ 08</span></p>
+                  <h3>Die Tafeln legen sich an</h3>
+                  <p>
+                    Der Hof verschwindet zuerst. Das Vordach bleibt, die
+                    Werkstatt bleibt bespielbar — nur der geschützte Bereich
+                    davor wird wieder zum offenen Platz.
+                  </p>
+                </div>
+              </li>
+
+              <li class="schritt">
+                <figure class="schritt__bild">
+                  <img
+                    src="assets/folge-7.webp"
+                    alt="Dieselbe Ansicht weiter geschlossen: das Vordach ist eingefahren, die Seitenwand fast zu, die Rampe liegt noch aus."
+                    width="1000"
+                    height="562"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <div class="schritt__text">
+                  <p class="schritt__nr"><b>07</b><span>/ 08</span></p>
+                  <h3>Das Vordach fährt ein</h3>
+                  <p>
+                    Die Klappen legen sich zurück an den Körper. Was offen
+                    bleibt, ist der Zugang zum Automaten und die Rampe — der
+                    Teil, der auch nachts funktionieren muss.
+                  </p>
+                </div>
+              </li>
+
+              <li class="schritt">
+                <figure class="schritt__bild">
+                  <img
+                    src="assets/folge-8.webp"
+                    alt="Der Baukörper wieder vollständig geschlossen, Menschen gehen über die ausgelegte Rampe daran vorbei."
+                    width="1000"
+                    height="562"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <div class="schritt__text">
+                  <p class="schritt__nr"><b>08</b><span>/ 08</span></p>
+                  <h3>Wieder zu</h3>
+                  <p>
+                    Am Ende steht wieder der kompakte Körper. Auf- und Zuklappen
+                    ist kein Umbau, sondern Teil des täglichen Betriebs — und
+                    der Grund, warum Mehrwerk auf einer Fläche stehen kann, die
+                    nicht ihm allein gehört.
+                  </p>
+                </div>
+              </li>
+            </ol>
+            <div class="folge__track" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+        </div>
+
+        <figure class="seite seite--breit">
+          <img
+            src="assets/durchgang.webp"
+            alt="Rendering: Blick von innen durch den geöffneten Baukörper auf einen Altstadtplatz, links die schwarzen Informationstafeln, rechts die Werkbank."
+            width="1600"
+            height="900"
+            loading="lazy"
+          />
+          <figcaption>
+            <b>05.c</b> Aufgeklappt wird der Bau zum Durchgang.
+          </figcaption>
+        </figure>
+      </section>
+
+      <div class="marsch marsch--trenner" data-marsch aria-hidden="true">
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+        ><svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+        <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+      </div>
+
+      <!-- ═══════════ POS 06 · DER STANDORT ═══════════ -->
+      <section
+        class="pos standort"
+        id="pos-06"
+        data-pos="06"
+        data-titel="Der Standort"
+      >
+        <div class="platte">
+          <h2 class="kopf"><span class="kopf__nr">06</span> Der Standort</h2>
+          <p class="spec">
+            Paketposthalle München · denkmalgeschützt · Erdgeschoss konsumfrei
+          </p>
+          <div class="fliess">
+            <p>
+              Die Halle wird zu einem überdachten, öffentlich zugänglichen
+              Stadtplatz ohne Konsumzwang. Der Satzungsbeschluss vom
+              26.&nbsp;November&nbsp;2025 beschreibt das Erdgeschoss als
+              <q>frei zugänglichen</q> Raum,
+              <q
+                >als Freifläche für Erholung, Sport und Spiel, für temporäre
+                Veranstaltungen sowie als Treffpunkt</q
+              >.
+            </p>
+            <p>
+              Mehrwerk passt in diesen Wortlaut, ohne ihn zu dehnen: ein
+              Treffpunkt, dessen Inhalt Reparatur ist. Kein Werkstatteinbau,
+              keine dauerhafte bauliche Änderung.
+            </p>
+          </div>
+
+          <dl class="masse">
+            <div>
+              <dt>20.000</dt>
+              <dd>Quadratmeter unter einem Dach</dd>
+            </div>
+            <div>
+              <dt>146</dt>
+              <dd>Meter Spannweite, stützenfrei</dd>
+            </div>
+            <div>
+              <dt>1.207</dt>
+              <dd>Ideen im Verfahren „Alle für die Halle“</dd>
+            </div>
+            <div>
+              <dt>19.000</dt>
+              <dd>Menschen haben darüber abgestimmt</dd>
+            </div>
+          </dl>
+
+          <div class="gewuenscht">
+            <p class="mikro">
+              Namentlich eingebracht wurden dabei unter anderem
+            </p>
+            <p class="gewuenscht__liste">
+              Repair-Café · DIY-Werkstatt · Bibliothek der Dinge ·
+              Textil-Upcycling · DIY-Fahrradwerkstatt · Werkstätten für Kreative
+            </p>
+          </div>
+        </div>
+
+        <div class="frage">
+          <blockquote>
+            <p>
+              Wer kümmert sich? Gibt es Patenschaften oder engagierte Gruppen,
+              die sich einbringen?
+            </p>
+            <footer>
+              Arbeitsgruppe „Konsumfrei“ — offen gelassen in der offiziellen
+              Dokumentation des Beteiligungsverfahrens „Alle für die Halle“
+            </footer>
+          </blockquote>
+          <p class="frage__antwort">Darauf ist Mehrwerk eine Antwort.</p>
+        </div>
+      </section>
+
+      <!-- ═══════════ POS 07 · DER STAND ═══════════ -->
+      <section
+        class="pos stand"
+        id="pos-07"
+        data-pos="07"
+        data-titel="Der Stand"
+      >
+        <div class="platte">
+          <h2 class="kopf"><span class="kopf__nr">07</span> Der Stand</h2>
+          <p class="spec">Bestandsaufnahme · Stand 2026</p>
+          <p class="lead">
+            Mehrwerk ist 2024 als Bachelorarbeit an der HfG Schwäbisch Gmünd
+            entstanden — aber nicht als Skizze, sondern als Bauaufgabe. Was
+            fehlt, sind die Dinge, die eine Hochschularbeit nicht liefern kann.
+          </p>
+
+          <div class="bilanz">
+            <div class="bilanz__spalte" data-marke="teal">
+              <h3>Vorhanden</h3>
+              <ul>
+                <li>Konzept und Dokumentation, 246 Seiten</li>
+                <li>
+                  Gestaltung vollständig: Bau, Flächen, Beschilderung,
+                  Leitsystem
+                </li>
+                <li>Maßgenaues 3D-Modell und gebautes Architekturmodell</li>
+                <li>Eventportfolio mit acht ausformulierten Formaten</li>
+                <li>Ausgewertete Reparaturdaten aus einem Repair Café</li>
+                <li>Digitaler Entwurf für Website und Assistent</li>
+              </ul>
+            </div>
+            <div class="bilanz__spalte" data-marke="rot">
+              <h3>Offen</h3>
+              <ul>
+                <li>Eine gemeinnützige Organisation als Träger</li>
+                <li>Die Zusage einer Fläche</li>
+                <li>Finanzierung — Anträge setzen einen Träger voraus</li>
+                <li>Flächenprogramm in Quadratmetern</li>
+                <li>Personal- und Betriebskonzept</li>
+                <li>Haftung und Genehmigungsrecht</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="unter">Wie es getragen werden soll</h3>
+          <dl class="tabelle tabelle--drei">
+            <div>
+              <dt>Trägerschaft</dt>
+              <dd>
+                Eine bestehende gemeinnützige Organisation nimmt Mehrwerk unter
+                ihr Dach — kein neuer Verein, der neben den vorhandenen um
+                dieselben Mittel konkurriert.
+              </dd>
+            </div>
+            <div>
+              <dt>Finanzierung</dt>
+              <dd>
+                Über Fördermittel. Für die Trägerorganisation entstehen dadurch
+                keine Kosten; Anträge sind allerdings nur mit einem
+                gemeinnützigen Träger möglich.
+              </dd>
+            </div>
+            <div>
+              <dt>Betrieb</dt>
+              <dd>
+                Bespielt von der Münchner Reparaturszene, nicht von Mehrwerk
+                selbst. Der Ort stellt Fläche, Technik und Publikum.
+              </dd>
+            </div>
+          </dl>
+
+          <p class="schluss">
+            Die rechte Spalte ist kein Mangel, sondern die Stelle, an der jemand
+            einsteigt. Wer sie füllt, bekommt die linke geschenkt.
+          </p>
+        </div>
+      </section>
+
+      <!-- ═══════════ POS 08 · KONTAKT ═══════════ -->
+      <section
+        class="pos kontakt"
+        id="pos-08"
+        data-pos="08"
+        data-titel="Kontakt"
+      >
+        <div class="kontakt__innen">
+          <h2 class="kopf"><span class="kopf__nr">08</span> Kontakt</h2>
+          <p class="kontakt__ruf">Lass uns quatschen.</p>
+          <p class="lead">
+            Diese Seite ist die Kurzfassung. Wenn dich das Projekt interessiert
+            — als Organisation, als Initiative, als Nachbarin oder einfach aus
+            Neugier: schreib mir. Konzept, Zahlen, Modell und Gestaltung zeige
+            ich lieber persönlich, und dann auch das, was hier nicht steht.
+          </p>
+          <dl class="wege">
+            <div>
+              <dt>Schreiben</dt>
+              <dd>
+                <a
+                  href="mailto:jakob.wankmueller@gmx.net?subject=Mehrwerk%20in%20der%20Paketposthalle"
+                  >jakob.wankmueller@gmx.net</a
+                >
+              </dd>
+            </div>
+            <div>
+              <dt>Anrufen</dt>
+              <dd>Nummer auf Anfrage — schreib kurz, ich rufe zurück.</dd>
+            </div>
+          </dl>
+          <div class="marsch marsch--trenner" data-marsch aria-hidden="true">
+            <svg viewBox="0 0 120 40"><use href="#chev" /></svg
+            ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+            ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+            ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+            ><svg viewBox="0 0 120 40"><use href="#chev" /></svg
+            ><svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+            <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+            <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+            <svg viewBox="0 0 120 40"><use href="#chev" /></svg>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="fuss">
+      <div class="fuss__innen">
+        <span class="fuss__marke" role="img" aria-label="Mehrwerk"></span>
+        <div class="fuss__meta">
+          <p>
+            Mehrwerk entstand 2024 als Bachelorarbeit von Jakob Wankmüller und
+            Peter Lehrke an der HfG Schwäbisch Gmünd. Die Realisierung in
+            München betreibt Jakob Wankmüller. Alle Abbildungen stammen aus
+            dieser Arbeit.
+          </p>
+          <p class="fuss__links">
+            <a href="verantwortlich.html">Wer dahintersteckt</a>
+            <a href="#pos-08">Kontakt</a>
+            <span>dasmehrwerk.de</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* Ein einziger Scroll-Lauf treibt das ganze Register:
+   Positionsanzeige, Öffnungsfolge, Chevron-Marsch. Ohne JS bleibt
+   alles lesbar — die Folge wird zur Bildreihe. */
+      (function () {
+        var wurzel = document.documentElement;
+        var ruhig = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        var leiste = document.querySelector(".leiste");
+        var positionen = [].slice.call(document.querySelectorAll(".pos"));
+        var nrFeld = document.querySelector("[data-spur-nr]");
+        var titelFeld = document.querySelector("[data-spur-titel]");
+        var ticks = [].slice.call(
+          document.querySelectorAll("[data-spur-tick]"),
+        );
+        var maersche = [].slice.call(
+          document.querySelectorAll("[data-marsch]"),
+        );
+
+        /* Die Leistenhöhe wird gemessen, nicht geraten: sie bricht auf schmalen
+     Viewports um, und daran hängen Sprungziele und die klebenden Köpfe. */
+        function leisteMessen() {
+          if (!leiste) return;
+          wurzel.style.setProperty("--leiste-h", leiste.offsetHeight + "px");
+        }
+
+        var folge = document.getElementById("folge");
+        var teile = [];
+        var trackTicks = [];
+
+        if (folge && !ruhig) {
+          var schritte = [].slice.call(folge.querySelectorAll(".schritt"));
+          if (schritte.length > 1) {
+            wurzel.classList.add("js-folge");
+            folge.style.setProperty("--schritte", schritte.length);
+            teile = schritte.map(function (el) {
+              return {
+                bild: el.querySelector(".schritt__bild"),
+                text: el.querySelector(".schritt__text"),
+              };
+            });
+            trackTicks = [].slice.call(
+              folge.querySelectorAll(".folge__track i"),
+            );
+          }
+        }
+
+        var letztePos = -1,
+          letzterText = -1,
+          offen = false;
+
+        function zeichnen() {
+          offen = false;
+          var mitte = window.innerHeight * 0.42;
+
+          var aktiv = 0;
+          for (var i = 0; i < positionen.length; i++) {
+            if (positionen[i].getBoundingClientRect().top <= mitte) aktiv = i;
+          }
+          if (aktiv !== letztePos) {
+            var p = positionen[aktiv];
+            if (nrFeld) nrFeld.textContent = p.dataset.pos;
+            if (titelFeld) titelFeld.textContent = p.dataset.titel;
+            for (var t = 0; t < ticks.length; t++) {
+              var ist = t === aktiv;
+              ticks[t].classList.toggle("ist", ist);
+              if (ist) {
+                ticks[t].setAttribute("aria-current", "true");
+              } else {
+                ticks[t].removeAttribute("aria-current");
+              }
+            }
+            letztePos = aktiv;
+          }
+
+          if (!ruhig) {
+            for (var m = 0; m < maersche.length; m++) {
+              var k = maersche[m].getBoundingClientRect();
+              if (k.bottom < -200 || k.top > window.innerHeight + 200) continue;
+              var f =
+                (window.innerHeight - k.top) / (window.innerHeight + k.height);
+              var richtung = maersche[m].classList.contains("marsch--rueck")
+                ? -1
+                : 1;
+              maersche[m].style.setProperty(
+                "--schub",
+                (f * 100 * richtung).toFixed(2) + "%",
+              );
+            }
+          }
+
+          if (teile.length) {
+            var kasten = folge.getBoundingClientRect();
+            var weg = kasten.height - window.innerHeight;
+            if (weg > 0) {
+              var q = Math.min(Math.max(-kasten.top / weg, 0), 1);
+              var pos = q * (teile.length - 1);
+              var unten = Math.min(Math.floor(pos), teile.length - 2);
+              var rest = pos - unten;
+              if (q >= 1) {
+                unten = teile.length - 2;
+                rest = 1;
+              }
+
+              /* Kein Überblenden: der nächste Zustand wischt über den vorigen. */
+              for (var j = 0; j < teile.length; j++) {
+                var b = teile[j].bild;
+                b.style.zIndex = j;
+                if (j === unten) {
+                  b.style.opacity = 1;
+                  b.style.clipPath = "none";
+                } else if (j === unten + 1) {
+                  b.style.opacity = 1;
+                  b.style.clipPath =
+                    "inset(0 " + ((1 - rest) * 100).toFixed(2) + "% 0 0)";
+                } else {
+                  b.style.opacity = 0;
+                  b.style.clipPath = "none";
+                }
+              }
+
+              var jetzt = rest > 0.5 ? unten + 1 : unten;
+              if (jetzt !== letzterText) {
+                for (var n = 0; n < teile.length; n++) {
+                  teile[n].text.style.opacity = n === jetzt ? 1 : 0;
+                  teile[n].text.setAttribute(
+                    "aria-hidden",
+                    n === jetzt ? "false" : "true",
+                  );
+                }
+                for (var v = 0; v < trackTicks.length; v++) {
+                  trackTicks[v].classList.toggle("ist", v <= jetzt);
+                }
+                letzterText = jetzt;
+              }
+            }
+          }
+        }
+
+        function anstossen() {
+          if (offen) return;
+          offen = true;
+          window.requestAnimationFrame(zeichnen);
+        }
+
+        leisteMessen();
+        window.addEventListener("scroll", anstossen, { passive: true });
+        window.addEventListener("resize", function () {
+          leisteMessen();
+          anstossen();
+        });
+        if (window.ResizeObserver && leiste)
+          new ResizeObserver(leisteMessen).observe(leiste);
+        zeichnen();
+      })();
+    </script>
+  </body>
+</html>

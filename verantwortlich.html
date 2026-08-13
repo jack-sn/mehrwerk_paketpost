@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wer dahintersteckt — mehrwerk</title>
+<meta name="description" content="mehrwerk entstand als Bachelorarbeit von Jakob Wankmüller und Peter Lehrke an der HfG Schwäbisch Gmünd. Die Realisierung in München betreibt Jakob Wankmüller.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 476 441'%3E%3Crect width='476' height='441' fill='%2314181D'/%3E%3Cpath d='M398.6 440.5L293 285.4v152.5H0V234l81.3-58.6 120.9 34.2v-33.6h122.5L476 391l-77.4 49.4ZM14 424h265.1V244.4h-77V224.2L84 190.7 14 241.2V424Zm279-163.6 109.6 161 53.7-34.3L317.4 190h-101.3v40.4h76.8v30Z' fill='%23FAFAFA'/%3E%3Cpath d='m379.2 123.6-93.3-17.9-93.3 17.9L286 0l93.3 123.6Zm-93.3-32.1 60.3 11.5-60.3-79.9-60.3 79.9 60.3-11.5Z' fill='%23FAFAFA'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=general-sans@1&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!--
+Zweite Ebene zu index.html. Erbt Welt und Kontrakt des Registers: dunkler Grund,
+tabellarische Positionsziffern, Signal Rot als einzige Auszeichnungsfarbe.
+Zweck: Wer so weit klickt, will wissen, wer dahintersteht. Eine Person, benannt,
+mit Rolle und Grenze der eigenen Rolle — nicht als Selbstdarstellung.
+Das Portrait ist ein Slot: Bild in assets/portrait.webp legen, dann erscheint es.
+-->
+
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="leiste">
+  <a class="leiste__plate" href="index.html" aria-label="mehrwerk — zur Startseite">
+    <svg viewBox="0 0 476 441" aria-hidden="true" focusable="false">
+      <path d="M398.604 440.452L293.033 285.386V437.901H0V234.05L81.2615 175.45L202.17 209.693V176.106H324.641L476 391.013L398.632 440.452H398.604ZM13.9553 423.959H279.091V265.602H278.98V244.423H202.17V224.193L83.9549 190.703L13.9553 241.188V423.959ZM292.935 260.429L402.526 421.407L456.184 387.123L317.385 190.048H216.111V230.481H292.921V260.429H292.935ZM379.248 123.557L285.943 105.683L192.638 123.557L285.957 0L379.262 123.557H379.248ZM285.957 91.4896L346.286 103.048L285.957 23.1443L225.629 103.048L285.957 91.4896Z" fill="currentColor"/>
+      <path d="M69.6096 292.775L63.2321 321.51H51.0352L61.6551 273.897H74.1032L83.3974 300.917L92.6916 273.897H104.958L115.578 321.51H103.186L96.8084 292.775L87.0816 321.51H79.3643L69.6375 292.775H69.6096Z" fill="currentColor"/>
+      <path d="M119.539 273.897H149.306V284.061H131.68V292.078H148.678V302.242H131.68V311.332H149.306V321.496H119.539V273.883V273.897Z" fill="currentColor"/>
+      <path d="M185.004 302.242H167.881V321.496H155.488V273.883H167.881V292.064H185.004V273.883H197.396V321.496H185.004V302.242Z" fill="currentColor"/>
+      <path d="M216.993 304.459V321.51H204.727V273.897H220.468C231.786 273.897 239.559 279.46 239.559 289.178C239.559 295.549 235.707 300.234 229.762 302.632L244.932 321.51H230.014L216.993 304.459ZM216.993 295.229H220.412C224.515 295.229 226.985 293.026 226.985 289.54C226.985 286.055 224.515 283.922 220.412 283.922H216.993V295.229Z" fill="currentColor"/>
+      <path d="M101.268 380.054H91.0251L83.252 352.267L75.4789 380.054H65.3055L50.0664 332.441H63.0867L71.4319 360.103L79.1492 332.441H87.5502L95.2535 360.103L103.599 332.441H116.493L101.268 380.054Z" fill="currentColor"/>
+      <path d="M119.539 332.455H149.306V342.619H131.68V350.636H148.678V360.8H131.68V369.89H149.306V380.054H119.539V332.441V332.455Z" fill="currentColor"/>
+      <path d="M167.755 363.016V380.068H155.488V332.455H171.23C182.548 332.455 190.321 338.018 190.321 347.736C190.321 354.107 186.469 358.792 180.524 361.19L195.693 380.068H180.775L167.755 363.016ZM167.755 353.787H171.174C175.277 353.787 177.747 351.584 177.747 348.098C177.747 344.613 175.277 342.479 171.174 342.479H167.755V353.787Z" fill="currentColor"/>
+      <path d="M209.843 350.385L224.384 332.455H238.981L222.04 352.281L242.582 380.068H227.663L213.694 361.19L209.843 365.735V380.068H197.395V332.455H209.843V350.385Z" fill="currentColor"/>
+    </svg>
+  </a>
+
+  <p class="leiste__stand">
+    <span class="leiste__nr">A</span>
+    <span class="leiste__titel">Anhang · Wer dahintersteckt</span>
+  </p>
+
+  <a class="leiste__cta" href="index.html#pos-07">Kontakt</a>
+</header>
+
+<main id="inhalt" class="person">
+
+  <a class="zurueck" href="index.html">← Zurück zum Register</a>
+
+  <div class="person__kopf">
+    <figure class="portrait">
+      <!-- Portrait-Slot: assets/portrait.webp ablegen und die nächste Zeile einkommentieren.
+      <img src="assets/portrait.webp" alt="Porträt von Jakob Wankmüller" width="900" height="1200">
+      -->
+      <figcaption>Bild folgt</figcaption>
+    </figure>
+
+    <div>
+      <h1>Jakob Wankmüller</h1>
+      <p class="person__rolle">
+        Gestalter, Urheber von mehrwerk und derjenige, der es nach München bringen will.
+      </p>
+
+      <div class="person__text">
+        <h2>Woher das kommt</h2>
+        <p>
+          mehrwerk entstand 2024 als Bachelorarbeit an der Hochschule für Gestaltung
+          Schwäbisch Gmünd, gemeinsam mit Peter Lehrke. Aus der Frage, warum so wenig
+          repariert wird, obwohl es Angebote gibt, wurde ein Ort: ein transformierbarer
+          Baukörper, der die Reparaturszene sichtbar macht, statt ihr Konkurrenz zu
+          machen. Das Ergebnis sind 246 Seiten Konzept, eine vollständige Gestaltung
+          und ein gebautes Modell.
+        </p>
+
+        <h2>Warum es damit nicht vorbei war</h2>
+        <p>
+          Eine Abschlussarbeit endet normalerweise im Regal. Diese nicht, weil in München
+          ein Ort entsteht, für den sie gemacht scheint: Die Paketposthalle wird ein
+          konsumfreier Stadtplatz, und im Beteiligungsverfahren dazu wurden Repair-Café,
+          DIY-Werkstatt und Bibliothek der Dinge ausdrücklich gewünscht. Die Frage,
+          wer sich darum kümmert, ist offen geblieben.
+        </p>
+
+        <h2>Was ich bin — und was nicht</h2>
+        <p>
+          Ich bin Urheber und Projektleiter, nicht Betreiber. mehrwerk soll von einer
+          Organisation getragen werden, die Reparatur schon kann, und von den Initiativen
+          bespielt werden, die es in München längst gibt. Meine Rolle endet dort, wo
+          Leute anfangen, die das besser können als ich: Trägerschaft, Betrieb, Programm.
+        </p>
+        <p>
+          Was ich mitbringe, ist ein fertig durchdachtes Projekt, die Gestaltung dazu
+          und die Bereitschaft, den langen Weg durch Ämter, Gremien und Förderanträge
+          zu gehen. Zwei bis drei Tage die Woche, seit dem Abschluss.
+        </p>
+
+        <h2>Erreichbar</h2>
+        <p>
+          <a href="mailto:jakob.wankmueller@gmx.net?subject=mehrwerk%20in%20der%20Paketposthalle">jakob.wankmueller@gmx.net</a>
+          — für alles, was mit mehrwerk zu tun hat. Auch für ein kurzes Telefonat,
+          schreib einfach eine Zeile.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="fuss">
+  <div class="fuss__innen">
+    <span class="fuss__marke" role="img" aria-label="mehrwerk"></span>
+    <div class="fuss__meta">
+      <p>
+        mehrwerk entstand 2024 als Bachelorarbeit von Jakob Wankmüller und Peter Lehrke
+        an der HfG Schwäbisch Gmünd. Die Realisierung in München betreibt Jakob Wankmüller.
+      </p>
+      <p class="fuss__links">
+        <a href="index.html">Das Register</a>
+        <a href="index.html#pos-07">Kontakt</a>
+        <span>dasmehrwerk.de</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

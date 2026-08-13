@@ -1,0 +1,16 @@
+# Betriebssystem
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Nextcloud-Konfliktdateien (entstehen beim Sync über mehrere Rechner)
+*conflicted copy*
+*Konflikt*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Werkzeug-Zwischenstand, gehört nicht zur Website
+.impeccable/

@@ -1,0 +1,1571 @@
+/* General Sans wird über die Fontshare-API geladen; die @font-face-Regel
+   kommt von dort. Siehe <head> in index.html und verantwortlich.html. */
+
+:root {
+  --ink: #14181D;
+  --ink-hoch: #1C2127;
+  --paper: #FAFAFA;
+  --teal: #539FA1;
+  --yellow: #F3B816;
+  --red: #E75A3C;
+
+  --paper-dim: rgba(250, 250, 250, 0.66);
+  --paper-schwach: rgba(250, 250, 250, 0.7);
+  --linie-dunkel: rgba(250, 250, 250, 0.16);
+  --linie-hell: rgba(20, 24, 29, 0.18);
+  --ink-70: #565B61;
+  --teal-text: #2F6F71;
+  --rot-text: #A63A20;
+  --gelb-text: #5C4706;
+
+  --rand: clamp(1.25rem, 7vw, 8rem);
+  --weit: 70rem;
+  --satz: 46rem;
+
+  --fs-mikro: 0.75rem;
+  --fs-klein: 0.9375rem;
+  --fs-body: clamp(1rem, 0.975rem + 0.12vw, 1.0625rem);
+  --fs-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --fs-titel: clamp(1.125rem, 1.05rem + 0.35vw, 1.375rem);
+  --fs-setzung: clamp(1.375rem, 0.95rem + 1.7vw, 2.375rem);
+  --fs-kopf: clamp(1.625rem, 1.2rem + 1.9vw, 3rem);
+  --fs-zahl: clamp(2rem, 1.4rem + 2.8vw, 4rem);
+  --fs-ruf: clamp(2.25rem, 1.3rem + 4.6vw, 5.75rem);
+  --luft: clamp(4rem, 9vw, 8rem);
+  --luft-klein: clamp(2rem, 3vw, 3.5rem);
+  --leiste-h: 3.75rem;
+  /* Startwert; das Skript misst die echte Höhe */
+}
+
+@media (max-width: 40rem) {
+  :root {
+    --rand: 1.25rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "General Sans", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+img {
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+ol,
+ul,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--red);
+  color: var(--ink);
+  padding: 0.85rem 1.25rem;
+  font-weight: 600;
+}
+
+.skip:focus {
+  left: 0;
+}
+
+:where(a, button):focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+}
+
+.pos {
+  scroll-margin-top: var(--leiste-h);
+}
+
+/* Die Spalte. Sektionen sind randlos, jeder Inhaltsblock trägt denselben
+   Innenrand, damit alles auf einer Kante sitzt. */
+.deck__blatt,
+.deck__unten-index,
+.platte,
+.kontakt__innen,
+.fuss__innen,
+.leiste,
+.hinweis,
+.kat__kopf {
+  padding-inline: max(var(--rand), (100% - var(--weit)) / 2);
+}
+
+.mikro {
+  font-size: var(--fs-mikro);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper-schwach);
+}
+
+/* ══ Registerleiste ══════════════════════════════════ */
+
+.leiste {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 2rem);
+  padding-block: 0.7rem;
+  background: var(--ink);
+  border-bottom: 1px solid var(--linie-dunkel);
+}
+
+.leiste__plate {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--ink);
+  transition: background 160ms ease, color 160ms ease;
+  padding: 0.3rem;
+}
+
+.leiste__plate svg {
+  width: 78%;
+  height: auto;
+}
+
+.leiste__plate:hover {
+  background: var(--red);
+}
+
+.leiste__stand {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  min-width: 0;
+  margin-right: auto;
+}
+
+.leiste__nr {
+  font-size: var(--fs-klein);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--red);
+}
+
+.leiste__titel {
+  font-size: var(--fs-mikro);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.spur {
+  display: flex;
+  gap: 2px;
+}
+
+.spur a {
+  width: 1.75rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--paper-schwach);
+  text-decoration: none;
+  border-top: 2px solid var(--linie-dunkel);
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.spur a:hover {
+  color: var(--paper);
+  border-top-color: var(--paper-dim);
+}
+
+.spur a.ist {
+  color: var(--ink);
+  background: var(--red);
+  border-top-color: var(--red);
+}
+
+.leiste__cta {
+  flex: none;
+  padding: 0.4rem 1rem;
+  font-size: var(--fs-mikro);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--paper-schwach);
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.leiste__cta:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--ink);
+}
+
+/* Unter 60rem bricht das Verzeichnis als voller Streifen um. Die echte
+   Leistenhöhe misst das Skript, daran hängen Sprungziele und Klebeköpfe. */
+@media (max-width: 60rem) {
+  .leiste {
+    flex-wrap: wrap;
+    padding-bottom: 0;
+  }
+
+  .spur {
+    order: 9;
+    width: 100%;
+    margin-inline: calc(-1 * max(var(--rand), (100% - var(--weit)) / 2));
+    padding-inline: max(var(--rand), (100% - var(--weit)) / 2);
+    gap: 1px;
+    margin-top: 0.7rem;
+    border-top: 1px solid var(--linie-dunkel);
+  }
+
+  .spur a {
+    flex: 1;
+    width: auto;
+    height: 1.6rem;
+    border-top: 0;
+  }
+}
+
+/* ══ Chevron-Marsch: die durchgehende Wegmarke ═══════ */
+
+.marsch {
+  display: flex;
+  gap: clamp(1rem, 3vw, 3rem);
+  color: var(--red);
+  overflow: hidden;
+}
+
+.marsch svg {
+  flex: none;
+  width: clamp(4rem, 10vw, 8rem);
+  height: auto;
+  transform: translate3d(var(--schub, 0%), 0, 0);
+}
+
+.marsch--trenner {
+  padding-block: clamp(1.5rem, 3vw, 2.25rem);
+  opacity: 0.3;
+  border-top: 1px solid var(--linie-dunkel);
+  border-bottom: 1px solid var(--linie-dunkel);
+}
+
+.marsch--rueck {
+  color: var(--ink);
+  opacity: 0.4;
+  margin-top: var(--luft-klein);
+}
+
+/* ══ POS 00 · Deckblatt ══════════════════════════════ */
+
+.deck {
+  padding-bottom: var(--luft);
+}
+
+.deck__blatt {
+  min-height: calc(100svh - var(--leiste-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+/* Die gezeichnete Wortmarke, nicht gesetzter Text. */
+.deck__marke {
+  width: clamp(10rem, 30vw, 28rem);
+
+}
+
+.deck__fuss {
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.deck__these {
+  font-size: var(--fs-titel);
+  font-weight: 500;
+  line-height: 1.45;
+  max-width: 52ch;
+}
+
+.deck__ort {
+  font-size: var(--fs-klein);
+  line-height: 1.65;
+  max-width: 56ch;
+  color: var(--paper-schwach);
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--linie-dunkel);
+}
+
+.deck__unten {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
+  padding-top: var(--luft-klein);
+}
+
+@media (min-width: 62rem) {
+  .deck__unten {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    gap: clamp(3rem, 6vw, 5rem);
+  }
+}
+
+.deck__unten-index {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
+  padding-top: var(--luft-klein);
+}
+
+@media (min-width: 62rem) {
+  .deck__unten-index {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+    gap: clamp(3rem, 6vw, 5rem);
+  }
+}
+
+.titelblock {
+  display: grid;
+  gap: 0;
+  align-content: start;
+}
+
+.titelblock>div {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 0.25rem 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--linie-dunkel);
+}
+
+.titelblock>div:last-child {
+  border-bottom: 1px solid var(--linie-dunkel);
+}
+
+.titelblock dt {
+  font-size: var(--fs-mikro);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper-schwach);
+  padding-top: 0.15rem;
+}
+
+.titelblock dd {
+  font-size: var(--fs-klein);
+  line-height: 1.45;
+}
+
+.deck__index {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.index {
+  display: grid;
+  gap: 0;
+}
+
+.index a {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.1rem 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--linie-dunkel);
+  text-decoration: none;
+  transition: color 160ms ease, padding-left 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.index li:last-child a {
+  border-bottom: 1px solid var(--linie-dunkel);
+}
+
+.index a:hover {
+  color: var(--red);
+  padding-left: 0.5rem;
+}
+
+.index b {
+  font-size: var(--fs-klein);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--red);
+}
+
+.index span {
+  font-size: var(--fs-titel);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.index i {
+  grid-column: 2;
+  font-style: normal;
+  font-size: var(--fs-klein);
+  color: var(--paper-schwach);
+}
+
+/* ══ Positionsköpfe ══════════════════════════════════ */
+
+.kopf {
+  font-size: var(--fs-kopf);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.4em;
+}
+
+.kopf__nr {
+  font-variant-numeric: tabular-nums;
+  color: var(--red);
+  letter-spacing: 0;
+}
+
+.kontur {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.03em currentColor;
+  paint-order: stroke fill;
+}
+
+@supports not (-webkit-text-stroke: 1px black) {
+  .kontur {
+    -webkit-text-fill-color: currentColor;
+    opacity: 0.45;
+  }
+}
+
+.spec {
+  margin-top: 0.9rem;
+  font-size: var(--fs-mikro);
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.lead {
+  margin-top: 1.4rem;
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  max-width: 48ch;
+  color: var(--paper-dim);
+}
+
+.fliess {
+  display: grid;
+  gap: 1.4rem;
+  max-width: 58ch;
+  color: var(--paper-dim);
+}
+
+.fliess q {
+  quotes: "»" "«";
+  color: var(--paper);
+  font-style: normal;
+}
+
+.platte {
+  padding-block: var(--luft);
+}
+
+/* ══ Kategorien: Kopf klebt, Inhalt zieht darüber ════ */
+
+.kat {
+  position: relative;
+}
+
+.kat__kopf {
+  position: sticky;
+  top: var(--leiste-h);
+  z-index: 1;
+  overflow: hidden;
+  min-height: min(34svh, 21rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(2.25rem, 4.5vw, 3.5rem);
+  color: var(--ink);
+}
+
+/* Die gekappte Riesenziffer: dasselbe Gerät wie die angeschnittenen
+   Konturlettern auf den gedruckten Außenflächen. */
+.kat__kopf::after {
+  content: attr(data-nr);
+  position: absolute;
+  right: -0.06em;
+  bottom: -0.05em;
+  font-size: clamp(7rem, 24vw, 20rem);
+  font-weight: 600;
+  line-height: 0.7;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.011em var(--ink);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.kat__kopf>* {
+  position: relative;
+  z-index: 1;
+}
+
+.kat__lauf {
+  position: relative;
+  z-index: 2;
+  background: var(--ink);
+}
+
+.kat--idee {
+  --kat: var(--red);
+}
+
+.kat--werkstatt {
+  --kat: var(--teal);
+}
+
+.kat--events {
+  --kat: var(--yellow);
+}
+
+.kat--projekte {
+  --kat: var(--red);
+}
+
+/* Nur eine Position trägt eine Farbfläche. */
+.kat--werkstatt .kat__kopf {
+  background: var(--kat);
+}
+
+.kat--werkstatt .kopf__nr {
+  color: var(--ink);
+  opacity: 0.75;
+}
+
+/* Die übrigen stehen auf dem Registergrund: die Kategoriefarbe trägt
+   dort die Schrift, nicht den Hintergrund. */
+.kat__kopf--offen {
+  background: none;
+  color: var(--paper);
+  border-top: 2px solid var(--kat);
+}
+
+.kat__kopf--offen .kopf__nr {
+  color: var(--kat);
+}
+
+.kat__kopf--offen .kontur {
+  color: var(--kat);
+}
+
+.kat__kopf--offen .setzung {
+  color: var(--kat);
+}
+
+.kat__kopf--offen .spec {
+  color: var(--paper-schwach);
+}
+
+.kat__kopf--offen::after {
+  -webkit-text-stroke-color: var(--kat);
+  opacity: 0.8;
+}
+
+.setzung {
+  margin-top: clamp(1.1rem, 2.5vw, 1.75rem);
+  font-size: var(--fs-setzung);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+  max-width: 24ch;
+  text-wrap: balance;
+}
+
+/* ══ Inhalt der Positionen ═══════════════════════════ */
+
+/* Der Lauf: das Rendering der Gebäudeseite bleibt stehen, der Text zieht
+   daran vorbei. Erst wenn er durch ist, kommt die nächste Position. */
+.lauf {
+  display: grid;
+  gap: var(--luft-klein);
+}
+
+@media (min-width: 62rem) {
+  .lauf {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .lauf>.seite {
+    position: sticky;
+    top: calc(var(--leiste-h) + clamp(1.5rem, 4vw, 3rem));
+    margin-bottom: 0;
+    max-width: none;
+  }
+}
+
+.lauf__text {
+  display: grid;
+  gap: var(--luft-klein);
+  align-content: start;
+}
+
+.lauf__text>* {
+  margin-top: 0;
+}
+
+/* der Grid-Abstand zählt, nicht die Eigenabstände */
+
+/* Belegbild: ein Rendering der jeweiligen Gebäudeseite, in der Spalte,
+   nicht über die volle Breite. */
+.seite {
+  margin: 0 0 var(--luft-klein);
+  max-width: var(--satz);
+}
+
+.seite img {
+  width: 100%;
+}
+
+.seite--breit {
+  max-width: none;
+  margin-top: var(--luft-klein);
+}
+
+.seite figcaption,
+.paar figcaption,
+.risse figcaption {
+  margin-top: 0.8rem;
+  font-size: var(--fs-mikro);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  color: var(--paper-schwach);
+}
+
+.seite figcaption b,
+.paar figcaption b,
+.risse figcaption b {
+  font-variant-numeric: tabular-nums;
+  color: var(--red);
+  margin-right: 0.4rem;
+}
+
+/* Statusvermerk in einer Bildunterschrift: muss lesbar sein. */
+.seite figcaption strong {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: var(--fs-klein);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--paper);
+  max-width: 56ch;
+}
+
+.gegen {
+  margin-top: var(--luft-klein);
+}
+
+.gegen>div {
+  display: grid;
+  gap: 0.4rem 3.5rem;
+  padding: 1.5rem 0 1.7rem;
+  border-bottom: 1px solid var(--linie-dunkel);
+}
+
+.gegen>div:first-child {
+  border-top: 1px solid var(--linie-dunkel);
+}
+
+@media (min-width: 52rem) {
+  .gegen>div {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+    align-items: baseline;
+  }
+}
+
+.gegen dt {
+  font-size: var(--fs-titel);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+.gegen dd {
+  font-size: var(--fs-klein);
+  line-height: 1.6;
+  color: var(--paper-dim);
+  max-width: 46ch;
+}
+
+.teile {
+  display: grid;
+  gap: 0;
+}
+
+@media (min-width: 56rem) {
+  .teile {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+  }
+}
+
+@media (min-width: 56rem) {
+  .teile--zwei {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Im Lauf steht die Liste einspaltig, damit sie am Bild vorbeiziehen kann. */
+.teile--liste {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 56rem) {
+  .teile--liste {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.teile--liste li>p:last-child {
+  max-width: 48ch;
+}
+
+.teile li {
+  padding: 1.5rem 0 1.75rem;
+  border-top: 1px solid var(--linie-dunkel);
+}
+
+.teile__nr {
+  font-size: var(--fs-mikro);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.14em;
+  color: var(--red);
+  margin-bottom: 0.9rem;
+}
+
+.teile h3 {
+  font-size: var(--fs-titel);
+  margin-bottom: 0.6rem;
+}
+
+.teile li>p:last-child {
+  font-size: var(--fs-klein);
+  line-height: 1.6;
+  color: var(--paper-dim);
+  max-width: 36ch;
+}
+
+/* Keyline statt Passepartout. */
+.paar {
+  margin-top: var(--luft-klein);
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (min-width: 52rem) {
+  .paar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.paar figure {
+  margin: 0;
+}
+
+.paar img {
+  width: 100%;
+  outline-offset: -1px;
+}
+
+/* Das Brett: Formate als Zeilen mit festen Spalten. */
+.brett__kopf,
+.brett__zeilen li {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.brett__kopf {
+  padding-bottom: 0.6rem;
+  font-size: var(--fs-mikro);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper-schwach);
+  border-bottom: 2px solid var(--yellow);
+}
+
+.brett__zeilen li {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--linie-dunkel);
+}
+
+.brett__zeilen b {
+  font-size: var(--fs-klein);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--yellow);
+}
+
+.brett__zeilen span {
+  font-size: var(--fs-titel);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.brett__fuss {
+  margin-top: 1rem;
+  font-size: var(--fs-klein);
+  color: var(--paper-schwach);
+}
+
+.nachsatz {
+  margin-top: var(--luft-klein);
+  font-size: var(--fs-klein);
+  line-height: 1.65;
+  color: var(--paper-dim);
+  max-width: 52ch;
+}
+
+.hinweis {
+  padding-block: 1.4rem 1.5rem;
+  border-top: 1px solid var(--linie-dunkel);
+  border-bottom: 1px solid var(--linie-dunkel);
+}
+
+.hinweis p {
+  font-size: var(--fs-klein);
+  line-height: 1.6;
+  color: var(--paper-dim);
+  max-width: 68ch;
+}
+
+.hinweis b {
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* ══ POS 05 · Öffnungsfolge ══════════════════════════ */
+
+.folge {
+  padding-inline: max(var(--rand), (100% - var(--weit)) / 2);
+}
+
+.folge__liste {
+  display: grid;
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+.schritt {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.schritt__bild {
+  margin: 0;
+}
+
+.schritt__bild img {
+  width: 100%;
+}
+
+.schritt__nr {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.9rem;
+}
+
+.schritt__nr b {
+  font-size: var(--fs-zahl);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--red);
+}
+
+.schritt__nr span {
+  font-size: var(--fs-mikro);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--paper-schwach);
+}
+
+.schritt__text h3 {
+  font-size: var(--fs-titel);
+  margin-bottom: 0.6rem;
+}
+
+.schritt__text>p:last-child {
+  font-size: var(--fs-klein);
+  line-height: 1.65;
+  color: var(--paper-dim);
+  max-width: 62ch;
+}
+
+.folge__track {
+  display: none;
+}
+
+/* Mit JS wird die Folge zur klebenden Bühne. */
+.js-folge .folge {
+  height: calc(100svh + (var(--schritte) - 1) * 72svh);
+  padding-block: 0;
+}
+
+.js-folge .folge__buehne {
+  position: sticky;
+  top: var(--leiste-h);
+  height: calc(100svh - var(--leiste-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(1rem, 3vw, 2rem);
+}
+
+.js-folge .folge__liste {
+  position: relative;
+  flex: 1;
+  display: block;
+  gap: 0;
+}
+
+.js-folge .schritt {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  gap: 0;
+}
+
+.js-folge .schritt__bild {
+  grid-area: 1 / 1;
+  opacity: 0;
+  will-change: opacity, clip-path;
+}
+
+.js-folge .schritt__bild img {
+  width: 100%;
+  max-height: 56svh;
+  object-fit: contain;
+  object-position: left center;
+  /* bleibt auf der Spaltenkante */
+}
+
+.js-folge .schritt:first-child .schritt__bild {
+  opacity: 1;
+}
+
+.js-folge .schritt__text {
+  grid-area: 2 / 1;
+  opacity: 0;
+  padding-top: clamp(1rem, 2.5vw, 1.6rem);
+  transition: opacity 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-folge .schritt:first-child .schritt__text {
+  opacity: 1;
+}
+
+.js-folge .schritt__nr {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 60rem) {
+  .js-folge .schritt__text {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 15rem) minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: start;
+    border-top: 1px solid var(--linie-dunkel);
+    padding-top: 1.1rem;
+  }
+
+  .js-folge .schritt__nr {
+    margin-bottom: 0;
+  }
+}
+
+.js-folge .folge__track {
+  display: flex;
+  gap: 4px;
+  margin-top: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.js-folge .folge__track i {
+  height: 3px;
+  flex: 1;
+  background: var(--linie-dunkel);
+  transition: background 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-folge .folge__track i.ist {
+  background: var(--red);
+}
+
+.risse {
+  margin-top: var(--luft-klein);
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (min-width: 52rem) {
+  .risse {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.risse figure {
+  margin: 0;
+}
+
+.risse img {
+  width: 100%;
+  background: var(--paper);
+}
+
+.tabelle {
+  margin-top: var(--luft-klein);
+  display: grid;
+  gap: 0;
+}
+
+@media (min-width: 52rem) {
+  .tabelle {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+@media (min-width: 76rem) {
+  .tabelle {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 52rem) {
+  .tabelle--drei {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.tabelle>div {
+  padding: 1.4rem 0 1.6rem;
+  border-top: 2px solid var(--red);
+}
+
+.tabelle dt {
+  font-size: var(--fs-titel);
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+  letter-spacing: -0.015em;
+}
+
+.tabelle dd {
+  font-size: var(--fs-klein);
+  line-height: 1.6;
+  color: var(--paper-dim);
+  max-width: 34ch;
+}
+
+/* ══ POS 06 · Standort ═══════════════════════════════ */
+
+.masse {
+  margin-top: var(--luft-klein);
+  display: grid;
+  gap: 0;
+}
+
+.masse>div {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 9rem) minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.2rem 1.5rem;
+  padding: 0.9rem 0 1rem;
+  border-bottom: 1px solid var(--linie-dunkel);
+}
+
+.masse>div:first-child {
+  border-top: 1px solid var(--linie-dunkel);
+}
+
+@media (min-width: 46rem) {
+  .masse>div {
+    grid-template-columns: minmax(9rem, 11rem) minmax(0, 1fr);
+    gap: 0.2rem 2.5rem;
+  }
+}
+
+.masse dt {
+  font-size: var(--fs-titel);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.masse dd {
+  font-size: var(--fs-klein);
+  line-height: 1.5;
+  color: var(--paper-dim);
+}
+
+.gewuenscht {
+  margin-top: var(--luft-klein);
+  display: grid;
+  gap: 0.9rem;
+}
+
+.gewuenscht__liste {
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  max-width: 44ch;
+}
+
+.frage {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.frage blockquote,
+.frage__antwort {
+  padding-inline: max(var(--rand), (100% - var(--weit)) / 2);
+}
+
+.frage blockquote {
+  margin: 0;
+  padding-top: var(--luft);
+}
+
+.frage blockquote p {
+  font-size: var(--fs-setzung);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.025em;
+  max-width: 20ch;
+  text-wrap: balance;
+}
+
+.frage blockquote p::before {
+  content: "„";
+}
+
+.frage blockquote p::after {
+  content: "“";
+}
+
+.frage footer {
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(20, 24, 29, 0.32);
+  max-width: 52ch;
+  font-size: var(--fs-klein);
+  line-height: 1.6;
+  color: var(--gelb-text);
+}
+
+.frage__antwort {
+  padding-top: clamp(2.25rem, 4.5vw, 3.5rem);
+  padding-bottom: var(--luft);
+  font-size: var(--fs-titel);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* ══ POS 07 · Stand ══════════════════════════════════ */
+
+.stand {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.stand .lead,
+.stand .fliess {
+  color: var(--ink-70);
+}
+
+.stand .spec,
+.stand .kopf__nr {
+  color: var(--rot-text);
+}
+
+.stand .tabelle>div {
+  border-top-color: var(--ink);
+}
+
+.stand .tabelle dd {
+  color: var(--ink-70);
+}
+
+.stand .unter {
+  margin-top: var(--luft);
+  font-size: var(--fs-titel);
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--linie-hell);
+}
+
+.bilanz {
+  margin-top: var(--luft-klein);
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+@media (min-width: 52rem) {
+  .bilanz {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.bilanz__spalte[data-marke="teal"] {
+  --marke: var(--teal);
+  --marke-text: var(--teal-text);
+}
+
+.bilanz__spalte[data-marke="rot"] {
+  --marke: var(--red);
+  --marke-text: var(--rot-text);
+}
+
+.bilanz__spalte h3 {
+  font-size: var(--fs-titel);
+  color: var(--marke-text);
+  padding-bottom: 0.7rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 2px solid var(--marke);
+}
+
+.bilanz__spalte li {
+  position: relative;
+  padding: 0 0 0 1.5rem;
+  font-size: var(--fs-klein);
+  line-height: 1.55;
+  margin-bottom: 0.85rem;
+}
+
+.bilanz__spalte li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.7rem;
+  height: 2px;
+  background: var(--marke);
+}
+
+.schluss {
+  margin-top: var(--luft-klein);
+  font-size: var(--fs-titel);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  max-width: 38ch;
+}
+
+/* ══ POS 08 · Kontakt ════════════════════════════════ */
+
+.kontakt {
+  background: var(--red);
+  color: var(--ink);
+}
+
+.kontakt__innen {
+  padding-block: var(--luft);
+}
+
+.kontakt .kopf__nr {
+  color: var(--ink);
+  opacity: 0.75;
+}
+
+.kontakt__ruf {
+  margin-top: clamp(1.25rem, 3vw, 2rem);
+  font-size: var(--fs-ruf);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.kontakt .lead {
+  color: var(--ink);
+  max-width: 46ch;
+}
+
+.wege {
+  margin-top: var(--luft-klein);
+  display: grid;
+  gap: 0;
+}
+
+@media (min-width: 52rem) {
+  .wege {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2.5rem, 5vw, 4rem);
+  }
+}
+
+.wege>div {
+  padding: 1.4rem 0 1.6rem;
+  border-top: 1px solid rgba(20, 24, 29, 0.34);
+  border-bottom: 1px solid rgba(20, 24, 29, 0.34);
+}
+
+.wege dt {
+  font-size: var(--fs-mikro);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.wege dd {
+  font-size: var(--fs-titel);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.wege a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 160ms ease;
+}
+
+.wege a:hover {
+  text-decoration-color: var(--paper);
+}
+
+/* ══ Fuß ═════════════════════════════════════════════ */
+
+.fuss {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.fuss__innen {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+@media (min-width: 52rem) {
+  .fuss__innen {
+    grid-template-columns: minmax(0, 8rem) minmax(0, 1fr);
+    gap: clamp(3rem, 6vw, 5rem);
+  }
+}
+
+.fuss__marke {
+  display: block;
+  width: 6.5rem;
+  aspect-ratio: 652 / 370;
+  background: currentColor;
+  -webkit-mask: url("assets/wortmarke.svg") no-repeat left center / contain;
+  mask: url("assets/wortmarke.svg") no-repeat left center / contain;
+}
+
+.fuss__meta {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.fuss__meta p {
+  font-size: var(--fs-klein);
+  line-height: 1.65;
+  color: var(--paper-dim);
+  max-width: 58ch;
+}
+
+.fuss__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  align-items: baseline;
+}
+
+.fuss__links a {
+  font-weight: 600;
+  color: var(--paper);
+  text-underline-offset: 0.2em;
+}
+
+.fuss__links a:hover {
+  color: var(--red);
+}
+
+.fuss__links span {
+  color: var(--paper-schwach);
+}
+
+/* ══ Seite: Wer dahintersteckt ═══════════════════════ */
+
+.person {
+  padding-inline: max(var(--rand), (100% - var(--weit)) / 2);
+  padding-block: clamp(3rem, 7vw, 5.5rem) var(--luft);
+}
+
+.person h1 {
+  font-size: var(--fs-kopf);
+  max-width: 18ch;
+}
+
+.person__kopf {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: start;
+}
+
+@media (min-width: 46rem) {
+  .person__kopf {
+    grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+  }
+}
+
+.portrait {
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  background: var(--ink-hoch);
+  border: 1px solid var(--linie-dunkel);
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portrait figcaption {
+  font-size: var(--fs-mikro);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--paper-schwach);
+}
+
+.person__rolle {
+  margin-top: 1rem;
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--paper-dim);
+}
+
+.person__text {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 60ch;
+  margin-top: 1.5rem;
+}
+
+.person__text p {
+  color: var(--paper-dim);
+}
+
+.person__text h2 {
+  font-size: var(--fs-titel);
+  margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+  margin-bottom: -0.4rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--linie-dunkel);
+  color: var(--paper);
+}
+
+.person__text a {
+  color: var(--paper);
+  text-underline-offset: 0.2em;
+}
+
+.zurueck {
+  display: inline-block;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: var(--fs-mikro);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-underline-offset: 0.25em;
+}
