@@ -113,14 +113,14 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <div class="deck__blatt">
           <div class="deck__fuss">
             <img class="deck__marke" src="assets/wortmarke-red-contour.svg" />
-            <p class="deck__these">
-              Mehrwerk ist ein Ort für Reparatur: eine Werkstatt, die rund um
-              die Uhr offensteht, eine Bühne für die Formate der Münchner
-              Reparaturszene und ein Verteiler zu den Initiativen, die es in der
-              Stadt längst gibt. Untergebracht in einem Baukörper, der sich auf-
-              und zuklappen lässt.
-            </p>
-            <div class="deck__unten">
+            <div class="deck__text">
+              <p class="deck__these">
+                Mehrwerk ist ein Ort für Reparatur: eine Werkstatt, die rund um
+                die Uhr offensteht, eine Bühne für die Formate der Münchner
+                Reparaturszene und ein Verteiler zu den Initiativen, die es in
+                der Stadt längst gibt. Untergebracht in einem Baukörper, der
+                sich auf- und zuklappen lässt.
+              </p>
               <p class="deck__ort">
                 Die Paketposthalle scheint dafür gemacht. Ihr Erdgeschoss wird
                 ein frei zugänglicher Stadtplatz ohne Konsumzwang — und in der
@@ -128,6 +128,8 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
                 DIY-Werkstatt und Bibliothek der Dinge ausdrücklich auf der
                 Wunschliste.
               </p>
+            </div>
+            <div class="deck__unten">
               <dl class="titelblock">
                 <div>
                   <dt>Gegenstand</dt>
@@ -251,77 +253,135 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         </div>
 
         <div class="kat__lauf">
-          <div class="platte">
-            <div class="lauf">
-              <figure class="seite">
-                <img
-                  src="assets/seite-gesamt.webp"
-                  alt="Rendering des geöffneten Baukörpers auf einem Platz: die Automatenseite mit dem Schriftzug Machs Selbst, daneben die Wortmarke MEHR WERK, rechts die Treppe zur Aussichtsplattform, Menschen davor."
-                  width="1200"
-                  height="675"
-                  loading="lazy"
-                />
-                <figcaption>
-                  <b>01.a</b> Der Ort im Betrieb. Alle vier Außenseiten tragen
-                  ihren eigenen Einstieg.
-                </figcaption>
-              </figure>
+          <div class="platte idee">
+            <div class="fliess idee__fliess">
+              <p>
+                Reparaturangebote gibt es in München längst — Repair Cafés,
+                offene Werkstätten, Initiativen, die das seit Jahren tragen.
+                Das Problem ist nicht das Angebot, es ist die Aufmerksamkeit:
+                Wer nicht ohnehin in der Szene ist, erfährt nie davon.
+              </p>
+              <p>
+                Mehrwerk ist deshalb zuerst ein Blickfang. Ein Baukörper, der
+                sich sichtbar auf- und zuklappt, mitten im Publikum — ein Ort,
+                an dem Reparatur nicht gesucht werden muss, sondern im Weg
+                steht. Keine zweite Werkstatt, keine Konkurrenz um
+                Ehrenamtliche, kein neues Programm. Sondern Fläche, Technik und
+                ein Publikum für die, die das längst können.
+              </p>
+            </div>
 
-              <div class="lauf__text">
-                <div class="fliess">
-                  <p>
-                    Reparaturangebote gibt es in München längst — Repair Cafés,
-                    offene Werkstätten, Initiativen, die das seit Jahren tragen.
-                    Das Problem liegt weniger im Angebot als in der
-                    Aufmerksamkeit: Wer nicht ohnehin in der Szene ist, erfährt
-                    nie davon.
-                  </p>
-                  <p>
-                    Deshalb konkurriert Mehrwerk nicht um dieselben
-                    Ehrenamtlichen, sondern stellt sich vor die bestehenden
-                    Initiativen und führt sie an einem Ort zusammen. Ein Platz
-                    mitten im Publikum, an dem Reparatur nicht gesucht werden
-                    muss, sondern im Weg steht.
-                  </p>
-                </div>
-
-                <dl class="gegen">
-                  <div>
-                    <dt>Keine zweite Werkstatt neben den bestehenden</dt>
-                    <dd>
-                      Sondern eine Fläche, auf der die bestehenden auftreten
-                      können — mit einem Publikum, das sie sonst nicht
-                      erreichen.
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Keine Konkurrenz um Ehrenamtliche</dt>
-                    <dd>
-                      Sondern ein Ort, an dem Ehrenamt sichtbar wird und deshalb
-                      leichter neue Leute findet.
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Kein neues Programm neben den vorhandenen</dt>
-                    <dd>
-                      Sondern Fläche, Technik und Publikum für die Formate, die
-                      die Initiativen ohnehin können.
-                    </dd>
-                  </div>
-                </dl>
+            <!-- Die Bühne: vier Zustände desselben Ortes. Mit JS liegen sie
+                 gestapelt und lösen einander ab, ohne JS stehen sie als
+                 Bildreihe untereinander. -->
+            <div class="buehne" id="buehne">
+              <div class="buehne__rahmen">
+                <figure class="buehne__bild ist" data-buehne="0">
+                  <img
+                    src="assets/automat.webp"
+                    alt="Rendering des geschlossenen Baukörpers auf einem Altstadtplatz: die schwarze Tafel Machs Selbst mit dem Ausleihautomaten voller Werkzeug, daneben die Wortmarke MEHR WERK, oben ein Solarpaneel, davor zwei Menschen."
+                    width="1600"
+                    height="900"
+                    decoding="async"
+                  />
+                  <figcaption>
+                    <b>01.a</b> Geschlossen und trotzdem im Betrieb. Der
+                    Automat gibt Werkzeug aus, auch wenn niemand da ist.
+                  </figcaption>
+                </figure>
+                <figure class="buehne__bild" data-buehne="1">
+                  <img
+                    src="assets/szenario-platz.webp"
+                    alt="Blick in den geöffneten Durchgang: rechts eine große schwarze Informationstafel mit der Frage Du weißt nicht wo anfangen sollst und mehreren Textspalten, links Klapptafeln, hinten der Platz."
+                    width="1800"
+                    height="1012"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>
+                    <b>01.b</b> Die Außenseiten sind das Informationsdesign.
+                    Sie antworten, bevor jemand fragt.
+                  </figcaption>
+                </figure>
+                <figure class="buehne__bild" data-buehne="2">
+                  <img
+                    src="assets/werkstation.webp"
+                    alt="Innenraum der Werkstation: beschriftete Werkzeugwand mit Zangen und Akkuschraubern, rote und gelbe Werkbänke, die Beschriftungen Werkstation und Endstation."
+                    width="1600"
+                    height="900"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>
+                    <b>01.c</b> Innen die Werkstation: jedes Werkzeug
+                    beschriftet, jeder Handgriff erklärt.
+                  </figcaption>
+                </figure>
+                <figure class="buehne__bild" data-buehne="3">
+                  <img
+                    src="assets/durchgang.webp"
+                    alt="Rendering: Blick von innen durch den geöffneten Baukörper auf einen Altstadtplatz, links die schwarzen Informationstafeln, rechts die Werkbank."
+                    width="1600"
+                    height="900"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>
+                    <b>01.d</b> Und wieder hinaus — zu den Terminen, den
+                    Formaten und den Initiativen der Stadt.
+                  </figcaption>
+                </figure>
               </div>
             </div>
+
+            <!-- Die Kette: vier Glieder, die die Bühne schalten. -->
+            <ol class="kette">
+              <li class="kette__glied ist" data-glied="0">
+                <p class="kette__nr">01</p>
+                <h3>Auffallen</h3>
+                <p class="kette__satz">
+                  Der Bau klappt auf und zu. Das sieht man von weitem — ohne
+                  Schild, ohne Vorwissen, ohne dass man es gesucht hätte.
+                </p>
+                <a class="kette__weiter" href="#pos-05">Der Baukörper</a>
+              </li>
+              <li class="kette__glied" data-glied="1">
+                <p class="kette__nr">02</p>
+                <h3>Verstehen</h3>
+                <p class="kette__satz">
+                  Alle vier Außenseiten sind beschriftet und erklären im
+                  Vorbeigehen, warum sich Reparieren überhaupt lohnt.
+                </p>
+                <a class="kette__weiter" href="#pos-03">MEHR Events</a>
+              </li>
+              <li class="kette__glied" data-glied="2">
+                <p class="kette__nr">03</p>
+                <h3>Mitmachen</h3>
+                <p class="kette__satz">
+                  Eine Werkstation zum Selbermachen. Ein Automat gibt Werkzeug
+                  und Ersatzteile rund um die Uhr aus, auch nachts.
+                </p>
+                <a class="kette__weiter" href="#pos-02">MEHR Werkstatt</a>
+              </li>
+              <li class="kette__glied" data-glied="3">
+                <p class="kette__nr">04</p>
+                <h3>Weiterleiten</h3>
+                <p class="kette__satz">
+                  Termine der Repair Cafés, Formate auf der Bühne, Wege zu den
+                  Initiativen der Stadt. Wer mehr will, geht weiter.
+                </p>
+                <a class="kette__weiter" href="#pos-04">MEHR Projekte</a>
+              </li>
+            </ol>
+
+            <p class="schluss">
+              Es geht nicht darum, dass Mehrwerk bekannt wird. Es geht darum,
+              dass Reparieren wieder selbstverständlich wird — hier oder bei
+              einer der Initiativen, die es längst gibt.
+            </p>
           </div>
         </div>
       </section>
-
-      <div class="hinweis">
-        <p>
-          <b>Hinweis zu 02 bis 05.</b> Die folgenden Positionen beschreiben das
-          ausgearbeitete Konzept aus der Bachelorarbeit — Räume, Formate und
-          Abläufe sind durchgeplant und gestaltet. Gebaut ist davon noch nichts.
-        </p>
-      </div>
 
       <!-- ═══════════ POS 02 · MEHR WERKSTATT ═══════════ -->
       <section
@@ -344,19 +404,18 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <div class="kat__lauf">
           <div class="platte">
             <div class="lauf">
-              <figure class="seite">
+              <figure>
                 <img
-                  src="assets/seite-werkstatt.webp"
-                  alt="Rendering der Werkstattseite: die aufgeklappte Wand gibt den Arbeitsplatz frei, ein Fahrrad steht im Ständer, darüber der Schriftzug Deine Werkstatt in Kontur."
-                  width="1200"
-                  height="675"
+                  src="assets/modell-3.webp"
+                  alt="Modelldetail: die Tafel mit der Aufschrift Machs Selbst und der Frage Du weißt nicht wie du anfangen sollst."
+                  width="1600"
+                  height="1066"
                   loading="lazy"
                 />
                 <figcaption>
-                  <b>02.a</b> Die Werkstattseite, aufgeklappt
+                  <b>04.c</b> Die Einstiegstafel am Modell
                 </figcaption>
               </figure>
-
               <ol class="teile teile--liste">
                 <li>
                   <p class="teile__nr">02.1</p>
@@ -378,29 +437,17 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
                 </li>
                 <li>
                   <p class="teile__nr">02.3</p>
-                  <h3>Endstation</h3>
+                  <h3>Innenraum</h3>
                   <p>
-                    Für Geräte, die niemand mehr rettet: prüfen, festhalten,
-                    erinnern. Was brauchbar ist, wandert zurück in den
-                    Kreislauf.
+                    Zugang möglich wenn man Mitglied ist, voll ausgestattete
+                    Werkstatt. Hier sollen man zusammen reparieren können und
+                    sich gegensetitig helfen.
                   </p>
                 </li>
               </ol>
             </div>
 
             <div class="paar">
-              <figure>
-                <img
-                  src="assets/innenraum.webp"
-                  alt="Innenraum der Werkstation: Werkzeugwand mit beschrifteten Werkzeugen, rote und gelbe Werkbänke, Beschriftung Werkstation und Endstation."
-                  width="1600"
-                  height="900"
-                  loading="lazy"
-                />
-                <figcaption>
-                  <b>02.b</b> Werkzeugwand und Endstation im Innenraum
-                </figcaption>
-              </figure>
               <figure>
                 <img
                   src="assets/werkzeugkasten.webp"
@@ -410,8 +457,18 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
                   loading="lazy"
                 />
                 <figcaption>
-                  <b>02.c</b> Ausleihkasten, Inhalt sortiert und beschriftet
+                  <b>02.c</b> Das Mehrwerk aufgeklappt bereit für ein Event
                 </figcaption>
+              </figure>
+              <figure class="seite">
+                <img
+                  src="assets/seite-werkstatt.webp"
+                  alt="Rendering der Werkstattseite: die aufgeklappte Wand gibt den Arbeitsplatz frei, ein Fahrrad steht im Ständer, darüber der Schriftzug Deine Werkstatt in Kontur."
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                />
+                <figcaption><b>02.a</b> Die Werkstattseite</figcaption>
               </figure>
             </div>
           </div>
@@ -544,11 +601,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
                 <figcaption>
                   <b>04.a</b> Die Automatenseite mit dem Einstieg in den
                   digitalen Layer.
-                  <strong
-                    >Der digitale Layer und der Reparatur-Assistent RUPERT sind
-                    ausgearbeiteter Konzeptbestandteil — gebaut ist beides
-                    nicht.</strong
-                  >
                 </figcaption>
               </figure>
 
@@ -570,33 +622,44 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
                     Vorher-Nachher, sondern als Beleg, dass es geht.
                   </p>
                 </li>
+                <li>
+                  <p class="teile__nr">04.3</p>
+                  <h3>Endstation</h3>
+                  <p>
+                    Eien Station zum Angeben und Teilen. Dinge die im Mehrwerk
+                    repariert werden sollen hier dokuemntiert werden und schnell
+                    auf dasmehrwerk.de hochgeladen werden.
+                  </p>
+                </li>
               </ol>
             </div>
 
             <div class="paar">
               <figure>
-                <img
-                  src="assets/modell-6.webp"
-                  alt="Gedruckte Schlüsselanhänger in Form kleiner Figuren mit blauen QR-Anhängern, verstreut auf weißem Grund."
-                  width="1600"
-                  height="1066"
-                  loading="lazy"
-                />
+                <div class="paar__bild paar__bild--beschnitt">
+                  <img
+                    src="assets/modell-6.webp"
+                    alt="Gedruckte Schlüsselanhänger in Form kleiner Figuren mit blauen QR-Anhängern, verstreut auf weißem Grund."
+                    width="1600"
+                    height="900"
+                    loading="lazy"
+                  />
+                </div>
                 <figcaption>
-                  <b>04.b</b> Anhänger mit Code: ein repariertes Ding trägt
-                  seine Geschichte mit
+                  <b>04.b</b> Anhänger mit Code: ein trinket für eine
+                  erfolgreicvhe Reparatur.
                 </figcaption>
               </figure>
               <figure>
                 <img
-                  src="assets/modell-3.webp"
-                  alt="Modelldetail: die Tafel mit der Aufschrift Machs Selbst und der Frage Du weißt nicht wie du anfangen sollst."
+                  src="assets/innenraum.webp"
+                  alt="Innenraum der Werkstation: Werkzeugwand mit beschrifteten Werkzeugen, rote und gelbe Werkbänke, Beschriftung Werkstation und Endstation."
                   width="1600"
-                  height="1066"
+                  height="900"
                   loading="lazy"
                 />
                 <figcaption>
-                  <b>04.c</b> Die Einstiegstafel am Modell
+                  <b>02.b</b> Werkzeugwand und Endstation im Innenraum
                 </figcaption>
               </figure>
             </div>
@@ -1152,6 +1215,49 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           }
         }
 
+        /* Die Bühne der Idee: vier Zustände, geschaltet vom Scrollweg und
+     jederzeit übersteuerbar per Zeiger oder Tastatur. */
+        var buehne = document.getElementById("buehne");
+        var buehnenBilder = [],
+          glieder = [],
+          ideeAktiv = -1,
+          ideeHalt = 0;
+
+        function ideeSetzen(i, vonHand) {
+          if (vonHand) ideeHalt = Date.now() + 5000;
+          if (i === ideeAktiv || i < 0 || i >= buehnenBilder.length) return;
+          ideeAktiv = i;
+          for (var b = 0; b < buehnenBilder.length; b++) {
+            buehnenBilder[b].classList.toggle("ist", b === i);
+          }
+          for (var g = 0; g < glieder.length; g++) {
+            var ist = g === i;
+            glieder[g].classList.toggle("ist", ist);
+            glieder[g].setAttribute("aria-current", ist ? "true" : "false");
+          }
+        }
+
+        if (buehne && !ruhig) {
+          buehnenBilder = [].slice.call(
+            buehne.querySelectorAll(".buehne__bild"),
+          );
+          glieder = [].slice.call(document.querySelectorAll(".kette__glied"));
+          if (buehnenBilder.length > 1 && glieder.length === buehnenBilder.length) {
+            wurzel.classList.add("js-idee");
+            glieder.forEach(function (glied, i) {
+              function an() {
+                ideeSetzen(i, true);
+              }
+              glied.addEventListener("mouseenter", an);
+              glied.addEventListener("click", an);
+              /* focusin fängt auch den Weiterlink im Glied — damit ist die
+           Bühne per Tabulator erreichbar, ohne eigenen Fokusfänger. */
+              glied.addEventListener("focusin", an);
+            });
+            ideeAktiv = 0;
+          }
+        }
+
         var letztePos = -1,
           letzterText = -1,
           offen = false;
@@ -1193,6 +1299,20 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
                 "--schub",
                 (f * 100 * richtung).toFixed(2) + "%",
               );
+            }
+          }
+
+          /* Der Scrollweg schaltet weiter, solange niemand von Hand
+       eingegriffen hat. So sieht auch, wer nur scrollt, alle vier. */
+          if (buehnenBilder.length && Date.now() > ideeHalt) {
+            var kb = buehne.getBoundingClientRect();
+            if (kb.bottom > 0 && kb.top < window.innerHeight) {
+              var spanne = window.innerHeight * 0.62;
+              var lauf = (spanne - kb.top) / (kb.height + spanne * 0.5);
+              var idx = Math.floor(
+                Math.min(Math.max(lauf, 0), 0.999) * buehnenBilder.length,
+              );
+              ideeSetzen(idx, false);
             }
           }
 
