@@ -804,10 +804,25 @@ li {
   aspect-ratio: auto;
 }
 
-/* Die Unterschrift haengt unter dem Rahmen, nicht darin — sonst deckte
-   sie das Bild ab. Deshalb bekommt der Rahmen unten ihren Platz. */
+/* Die Unterschrift haengt unter dem Rahmen, nicht darin, sonst deckte sie
+   das Bild ab. Deshalb bekommt der Rahmen unten ihren Platz reserviert.
+   Beide Werte haengen an derselben Groesse: sonst laeuft die Unterschrift
+   aus dem reservierten Feld heraus, und durch den Ueberhang scrollt der
+   Text der Liste sichtbar hindurch. Drei Zeilen plus Abstand. */
 .js-wechsel .wechsel {
-  padding-bottom: 3.65rem;
+  --unterschrift: 5.2rem;
+  padding-bottom: var(--unterschrift);
+}
+
+.js-wechsel .wechsel__bild figcaption {
+  min-height: calc(var(--unterschrift) - 0.85rem);
+}
+
+/* Wo keine Unterschrift steht, wird auch kein Platz dafuer freigehalten.
+   Betrifft das modulare Mehrwerk und die Eventbilder: dort zeigen die
+   Bilder beispielhaft, was passiert, und tragen keine eigene Zeile. */
+.js-wechsel .wechsel:not(:has(figcaption)) {
+  --unterschrift: 0rem;
 }
 
 .js-wechsel .wechsel__bild figcaption {
@@ -818,16 +833,31 @@ li {
 }
 
 /* Auf schmalen Schirmen steht das Bild ueber der Liste statt daneben.
-   Damit der Wechsel ueberhaupt zu sehen ist, klebt es dort auch — sonst
-   waere es aus dem Bild, sobald man den zweiten Punkt liest. Der Grund
-   der Sektion liegt darunter, damit die Liste nicht durchscheint. */
+   Damit der Wechsel ueberhaupt zu sehen ist, klebt es dort auch, sonst
+   waere es aus dem Bild, sobald man den zweiten Punkt liest.
+
+   Der Lauf war hier ein Grid, und ein klebendes Element ist im Grid auf
+   seine eigene Zeile beschraenkt: das Bild loeste sich, sobald die Liste
+   begann. Als Block reicht sein Klebebereich ueber den ganzen Lauf. */
 @media (max-width: 61.999rem) {
+  .lauf {
+    display: block;
+  }
+
+  .lauf > * + * {
+    margin-top: var(--luft-klein);
+  }
+
+  /* Buendig unter der Leiste samt Spur, kein Spalt dazwischen. Die Luft
+     ueber dem Bild liegt als Innenabstand im klebenden Block selbst und
+     traegt damit dessen Grund — sonst scrollte der Text durch den Spalt. */
   .js-wechsel .lauf > .wechsel {
     position: sticky;
-    top: calc(var(--leiste-h) + clamp(0.5rem, 2vw, 1rem));
+    top: var(--leiste-h);
     z-index: 1;
     background: var(--ink);
-    padding-bottom: calc(3.65rem + clamp(0.75rem, 2vw, 1.25rem));
+    padding-top: clamp(0.75rem, 2vw, 1.25rem);
+    padding-bottom: calc(var(--unterschrift) + clamp(0.75rem, 2vw, 1.25rem));
   }
 }
 
@@ -2703,5 +2733,45 @@ html:not(.js-wechsel) .modular__text li p {
      Nebeneinander gehoert er unter beides. */
   .js-folge .folge__buehne {
     justify-content: center;
+  }
+}
+
+/* ══ Deckblatt auf schmalen Schirmen ═════════════════════ */
+
+/* Zwei Spalten waren fuer das Telefon zu eng: die Marke schrumpfte auf
+   Daumennagelgroesse, der Absatz daneben brach nach jedem zweiten Wort um.
+   Untereinander bekommt beides seine Breite. */
+@media (max-width: 46rem) {
+  .deck__fuss {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: clamp(1.75rem, 6vw, 3rem);
+  }
+
+  .deck__marke {
+    width: min(100%, 20rem);
+  }
+}
+
+/* ══ Modulares Mehrwerk auf schmalen Schirmen ════════════ */
+
+/* Nebeneinander bekommt jeder Satz einen Schirm fuer sich (siehe oben,
+   ab 62rem). Uebereinander galt das nicht: die drei Saetze zusammen hatten
+   knapp 370px Scrollweg, auf die sich fuenf Bildzustaende verteilen
+   mussten. Das sah aus wie Flackern, nicht wie eine Bewegung. Also
+   bekommen die Saetze auch hier ihren Weg, nur kuerzer, weil das klebende
+   Bild oben schon ein Drittel des Schirms einnimmt. */
+@media (max-width: 61.999rem) {
+  .modular__text {
+    gap: 0;
+  }
+
+  .modular__text li {
+    min-height: 62svh;
+    display: flex;
+    align-items: center;
+  }
+
+  .modular__text li:last-child {
+    min-height: 42svh;
   }
 }
