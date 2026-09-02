@@ -67,6 +67,12 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
           fill="currentColor"
         />
       </symbol>
+      <symbol id="brief" viewBox="0 0 24 24">
+        <path
+          d="M2 5h20v14H2V5zm2.4 2L12 12.6 19.6 7H4.4zM20 8.9l-8 5.9-8-5.9V17h16V8.9z"
+          fill="currentColor"
+        />
+      </symbol>
       <symbol id="pfeil" viewBox="0 0 24 24">
         <path
           d="M8.5 3.2L17.3 12l-8.8 8.8-2.6-2.6L12.1 12 5.9 5.8z"
@@ -103,7 +109,12 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <a href="#pos-08" data-spur-tick><span>08</span></a>
       </nav>
 
-      <a class="leiste__cta" href="#pos-08">Kontakt</a>
+      <a class="leiste__cta" href="#pos-08" aria-label="Kontakt">
+        <svg class="leiste__cta-icon" aria-hidden="true" focusable="false">
+          <use href="#brief" />
+        </svg>
+        <span class="leiste__cta-wort">Kontakt</span>
+      </a>
     </header>
 
     <main>

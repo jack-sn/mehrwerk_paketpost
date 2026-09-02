@@ -205,12 +205,16 @@ li {
   background: var(--red);
 }
 
+/* Der Stand nimmt den freien Platz und gibt ihn auch wieder her: flex-basis 0
+   heisst, ein langer Titel kann die Leiste weder umbrechen noch das Verzeichnis
+   zusammenschieben — er kuerzt sich selbst. Sonst wandert die Leistenhoehe beim
+   Scrollen mit der Titellaenge, und alles daran haengende springt. */
 .leiste__stand {
+  flex: 1 1 0;
   display: flex;
   align-items: baseline;
   gap: 0.55rem;
   min-width: 0;
-  margin-right: auto;
 }
 
 .leiste__nr {
@@ -231,6 +235,7 @@ li {
 }
 
 .spur {
+  flex: none;
   display: flex;
   gap: 2px;
 }
@@ -264,6 +269,9 @@ li {
 
 .leiste__cta {
   flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.4rem 1rem;
   font-size: var(--fs-mikro);
   font-weight: 600;
@@ -283,6 +291,12 @@ li {
   color: var(--ink);
 }
 
+.leiste__cta-icon {
+  display: none;
+  width: 1rem;
+  height: 1rem;
+}
+
 /* Unter 60rem bricht das Verzeichnis als voller Streifen um. Die echte
    Leistenhöhe misst das Skript, daran hängen Sprungziele und Klebeköpfe. */
 @media (max-width: 60rem) {
@@ -292,6 +306,9 @@ li {
   }
 
   .spur {
+    /* Als eigener Streifen darf das Verzeichnis wieder nachgeben: die
+       negativen Raender machen es breiter als die Zeile. */
+    flex: 0 1 auto;
     order: 9;
     width: 100%;
     margin-inline: calc(-1 * max(var(--rand), (100% - var(--weit)) / 2));
@@ -306,6 +323,25 @@ li {
     width: auto;
     height: 1.6rem;
     border-top: 0;
+  }
+
+  /* Eng wird es in der oberen Zeile: dort steht der Knopf nur als Zeichen,
+     damit der Titel den Platz bekommt. */
+  .leiste__cta {
+    padding: 0.5rem;
+  }
+
+  .leiste__cta-icon {
+    display: block;
+  }
+
+  .leiste__cta-wort {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 }
 
