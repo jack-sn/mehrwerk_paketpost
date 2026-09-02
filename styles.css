@@ -2,21 +2,21 @@
    kommt von dort. Siehe <head> in index.html und verantwortlich.html. */
 
 :root {
-  --ink: #14181D;
-  --ink-hoch: #1C2127;
-  --paper: #FAFAFA;
-  --teal: #539FA1;
-  --yellow: #F3B816;
-  --red: #E75A3C;
+  --ink: #14181d;
+  --ink-hoch: #1c2127;
+  --paper: #fafafa;
+  --teal: #539fa1;
+  --yellow: #f3b816;
+  --red: #e75a3c;
 
   --paper-dim: rgba(250, 250, 250, 0.66);
   --paper-schwach: rgba(250, 250, 250, 0.7);
   --linie-dunkel: rgba(250, 250, 250, 0.16);
   --linie-hell: rgba(20, 24, 29, 0.18);
-  --ink-70: #565B61;
-  --teal-text: #2F6F71;
-  --rot-text: #A63A20;
-  --gelb-text: #5C4706;
+  --ink-70: #565b61;
+  --teal-text: #2f6f71;
+  --rot-text: #a63a20;
+  --gelb-text: #5c4706;
 
   --rand: clamp(1.25rem, 7vw, 8rem);
   --weit: 70rem;
@@ -31,8 +31,8 @@
   --fs-kopf: clamp(1.625rem, 1.2rem + 1.9vw, 3rem);
   --fs-zahl: clamp(2rem, 1.4rem + 2.8vw, 4rem);
   --fs-ruf: clamp(2.25rem, 1.3rem + 4.6vw, 5.75rem);
-  --luft: clamp(4rem, 9vw, 8rem);
-  --luft-klein: clamp(2rem, 3vw, 3.5rem);
+  --luft: clamp(5.5rem, 11vw, 11rem);
+  --luft-klein: clamp(2.75rem, 4.5vw, 5rem);
   --leiste-h: 3.75rem;
   /* Startwert; das Skript misst die echte Höhe */
 }
@@ -49,15 +49,14 @@
   box-sizing: border-box;
 }
 
+/* Kein scroll-behavior: smooth auf html. Chrome legt diese Kurve nicht
+   nur auf Sprungziele, sondern auch auf Rad und Trackpad: jede kleine
+   Bewegung startet eine neue Animation auf ein wanderndes Ziel, und die
+   Kurven addieren sich — der Scroll faengt zaeh an und wird dann hastig.
+   Die Seite scrollt jetzt so, wie der Browser scrollt. Das Gleiten zu
+   einem Sprungziel macht dafuer der Klick selbst (siehe Skript). */
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
 }
 
 body {
@@ -91,6 +90,12 @@ h3 {
 }
 
 p {
+  margin: 0;
+}
+
+/* figure traegt sonst die 40px Seitenrand des Browsers — die Buehne stuende
+   damit schmaler als die Kette darunter. */
+figure {
   margin: 0;
 }
 
@@ -185,7 +190,9 @@ li {
   width: 3.5rem;
   height: 3.5rem;
   color: var(--ink);
-  transition: background 160ms ease, color 160ms ease;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
   padding: 0.3rem;
 }
 
@@ -239,7 +246,9 @@ li {
   color: var(--paper-schwach);
   text-decoration: none;
   border-top: 2px solid var(--linie-dunkel);
-  transition: color 160ms ease, border-color 160ms ease;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
 }
 
 .spur a:hover {
@@ -262,7 +271,10 @@ li {
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid var(--paper-schwach);
-  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease;
 }
 
 .leiste__cta:hover {
@@ -344,8 +356,6 @@ li {
 /* Die gezeichnete Wortmarke, nicht gesetzter Text. */
 .deck__marke {
   width: clamp(10rem, 30vw, 28rem);
-
-
 }
 
 .deck__fuss {
@@ -369,7 +379,6 @@ li {
 
   color: var(--paper-schwach);
   padding-top: 1.1rem;
-
 }
 
 .deck__unten {
@@ -412,7 +421,7 @@ li {
 
 /* Kein justify-self hier: die Zeilen sollen die Breite vom Block erben,
    nicht vom eigenen Inhalt — nur so werden die Linien gleich lang. */
-.titelblock>div {
+.titelblock > div {
   display: grid;
   grid-template-columns: 7.5rem minmax(0, 1fr);
   gap: 0.25rem 10rem;
@@ -420,8 +429,18 @@ li {
   border-top: 1px solid var(--linie-dunkel);
 }
 
-.titelblock>div:last-child {
+.titelblock > div:last-child {
   border-bottom: 1px solid var(--linie-dunkel);
+}
+
+/* Der Spaltenabstand von 10rem plus 7.5rem Beschriftung ergibt eine
+   Mindestbreite von rund 440px — auf dem Telefon schob das die ganze Seite
+   quer. Schmaler Schirm, schmalere Spalte, kleiner Abstand. */
+@media (max-width: 46rem) {
+  .titelblock > div {
+    grid-template-columns: 5.75rem minmax(0, 1fr);
+    gap: 0.25rem 1.25rem;
+  }
 }
 
 .titelblock dt {
@@ -462,20 +481,20 @@ li {
 /* Beim Hover rückt nur der Zeileninhalt ein, nicht die Zeile selbst:
    die Trennlinie bleibt auf der Spaltenkante, und die Bewegung läuft
    über transform statt über padding — kein Layout pro Frame. */
-.index a>* {
+.index a > * {
   transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.index a:hover>* {
+.index a:hover > * {
   transform: translateX(0.5rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .index a>* {
+  .index a > * {
     transition: none;
   }
 
-  .index a:hover>* {
+  .index a:hover > * {
     transform: none;
   }
 }
@@ -608,7 +627,7 @@ li {
   pointer-events: none;
 }
 
-.kat__kopf>* {
+.kat__kopf > * {
   position: relative;
   z-index: 1;
 }
@@ -700,7 +719,7 @@ li {
     align-items: start;
   }
 
-  .lauf>.seite {
+  .lauf > .seite {
     position: sticky;
     top: calc(var(--leiste-h) + clamp(1.5rem, 4vw, 3rem));
     margin-bottom: 0;
@@ -714,11 +733,130 @@ li {
   align-content: start;
 }
 
-.lauf__text>* {
+.lauf__text > * {
   margin-top: 0;
 }
 
 /* der Grid-Abstand zählt, nicht die Eigenabstände */
+
+/* ── Das wechselnde Belegbild ────────────────────────
+   Neben den Punkten klebt ein Bild, das mit ihnen umschlägt: ein Blatt
+   je Punkt. Ohne JS stehen die Blätter als Bildreihe untereinander —
+   dieselbe Bauweise wie die Bühne der Idee, nur an die Spalte gebunden. */
+
+.wechsel__rahmen {
+  display: grid;
+  gap: var(--luft-klein);
+}
+
+.wechsel__bild img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.wechsel__bild figcaption {
+  margin-top: 0.85rem;
+  font-size: var(--fs-klein);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+  color: var(--paper-schwach);
+  min-height: 3.2rem;
+}
+
+.wechsel__bild figcaption b {
+  color: var(--kat, var(--red));
+  margin-right: 0.4rem;
+}
+
+/* Mit JS: gestapelt. Der Rahmen traegt die Hoehe, die Blaetter liegen
+   deckungsgleich darin und loesen einander ab. */
+.js-wechsel .wechsel__rahmen {
+  display: block;
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.js-wechsel .wechsel__bild {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s linear 520ms;
+}
+
+.js-wechsel .wechsel__bild.ist {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0s;
+}
+
+.js-wechsel .wechsel__bild img {
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+/* Die Unterschrift haengt unter dem Rahmen, nicht darin — sonst deckte
+   sie das Bild ab. Deshalb bekommt der Rahmen unten ihren Platz. */
+.js-wechsel .wechsel {
+  padding-bottom: 3.65rem;
+}
+
+.js-wechsel .wechsel__bild figcaption {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+/* Auf schmalen Schirmen steht das Bild ueber der Liste statt daneben.
+   Damit der Wechsel ueberhaupt zu sehen ist, klebt es dort auch — sonst
+   waere es aus dem Bild, sobald man den zweiten Punkt liest. Der Grund
+   der Sektion liegt darunter, damit die Liste nicht durchscheint. */
+@media (max-width: 61.999rem) {
+  .js-wechsel .lauf > .wechsel {
+    position: sticky;
+    top: calc(var(--leiste-h) + clamp(0.5rem, 2vw, 1rem));
+    z-index: 1;
+    background: var(--ink);
+    padding-bottom: calc(3.65rem + clamp(0.75rem, 2vw, 1.25rem));
+  }
+}
+
+/* Der aktive Punkt traegt die Kategoriefarbe, die ruhenden treten
+   zurueck — dieselbe Markierungsregel wie in der Kette. */
+.js-wechsel [data-wechsel-liste] .teile__nr {
+  color: var(--paper-schwach);
+  transition: color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-wechsel [data-wechsel-liste] li.ist .teile__nr {
+  color: var(--kat, var(--red));
+}
+
+.js-wechsel [data-wechsel-liste] li {
+  transition: border-color 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-wechsel [data-wechsel-liste] li.ist {
+  border-top-color: var(--kat, var(--red));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-wechsel .wechsel__bild,
+  .js-wechsel [data-wechsel-liste] .teile__nr,
+  .js-wechsel [data-wechsel-liste] li {
+    transition: none;
+  }
+}
 
 /* Belegbild: ein Rendering der jeweiligen Gebäudeseite, in der Spalte,
    nicht über die volle Breite. */
@@ -740,8 +878,9 @@ li {
 .paar figcaption,
 .risse figcaption {
   margin-top: 0.8rem;
-  font-size: var(--fs-mikro);
-  letter-spacing: 0.02em;
+  font-size: var(--fs-klein);
+  font-weight: 400;
+  letter-spacing: 0.01em;
   line-height: 1.6;
   color: var(--paper-schwach);
 }
@@ -749,6 +888,7 @@ li {
 .seite figcaption b,
 .paar figcaption b,
 .risse figcaption b {
+  font-weight: 400;
   font-variant-numeric: tabular-nums;
   color: var(--red);
   margin-right: 0.4rem;
@@ -770,19 +910,19 @@ li {
   margin-top: var(--luft-klein);
 }
 
-.gegen>div {
+.gegen > div {
   display: grid;
   gap: 0.4rem 3.5rem;
   padding: 1.5rem 0 1.7rem;
   border-bottom: 1px solid var(--linie-dunkel);
 }
 
-.gegen>div:first-child {
+.gegen > div:first-child {
   border-top: 1px solid var(--linie-dunkel);
 }
 
 @media (min-width: 52rem) {
-  .gegen>div {
+  .gegen > div {
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
     align-items: baseline;
   }
@@ -829,7 +969,7 @@ li {
 
 .idee__fliess .schluss {
   margin-top: clamp(0.5rem, 1.5vw, 1.25rem);
-  max-width: 46ch;
+  max-width: 100%;
   color: var(--paper);
 }
 
@@ -838,6 +978,92 @@ li {
    der Ausschnitt gibt nach, die Kette darunter bleibt sichtbar. */
 .buehne {
   margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* Die Szene haelt Buehne und Kette fest, waehrend der Scrollweg darunter
+   die vier Zustaende durchschaltet. Ein Zustand kostet 66svh Weg — genug,
+   dass der Wechsel wie ein Einrasten wirkt und nicht wie ein Ruckeln.
+   Ohne JS oder auf niedrigen Fenstern ist .szene ein gewoehnlicher Kasten. */
+/* Kein scroll-snap-type. Die Eigenschaft muss auf dem Scrollcontainer
+   stehen, also auf html — und sobald sie dort steht, laesst Chrome jede
+   Radbewegung animiert auf ihre Zielposition laufen, auf der ganzen
+   Seite. Das las sich wie ein Ease auf dem Scroll, und die Reichweite
+   von proximity laesst sich nicht einstellen. Das Einrasten macht
+   deshalb das Skript: nur in der Szene, und nur wenn man ohnehin schon
+   dicht an einem Zustand stehenbleibt. */
+
+.js-szene .szene {
+  position: relative;
+  --zustaende: 4;
+  height: calc((100svh - var(--leiste-h)) + (var(--zustaende) - 1) * 66svh);
+}
+
+.js-szene .szene__halt {
+  position: sticky;
+  top: var(--leiste-h);
+  height: calc(100svh - var(--leiste-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: clamp(0.75rem, 2.5vw, 2rem);
+}
+
+/* Im Halt zaehlt jeder Millimeter. Statt der Buehne eine Hoehe zu geben
+   und zu hoffen, dass die Kette darunter noch passt, bekommt die Kette
+   ihre Hoehe und die Buehne den Rest: so haelt die Szene auch auf
+   niedrigen Fenstern, ohne unten abzuschneiden. */
+.js-szene .szene__halt .buehne {
+  margin-top: 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.js-idee.js-szene .buehne__rahmen {
+  flex: 1 1 auto;
+  min-height: 9rem;
+  height: auto;
+}
+
+/* Auf schmalen Schirmen ist unter der Bühne kein Platz für vier Glieder
+   nebeneinander — und untereinander wäre es eine Liste, die mit dem Bild
+   nichts mehr zu tun hat. Also liegen sie gestapelt und lösen einander
+   ab, genau wie die Bilder darüber. */
+@media (max-width: 61.999rem) {
+  .js-szene .szene__halt .kette {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .js-szene .szene__halt .kette__glied {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s linear 420ms;
+  }
+
+  .js-szene .szene__halt .kette__glied.ist {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-szene .szene__halt .kette__glied {
+    transition: none;
+  }
+}
+
+.js-szene .szene__halt .kette {
+  flex: none;
+  margin-top: clamp(1.25rem, 2.4vw, 1.9rem);
+  gap: clamp(1.25rem, 2.4vw, 1.9rem) clamp(1.5rem, 3vw, 2.5rem);
 }
 
 /* Ohne JS: die vier Zustände als gewöhnliche Bildreihe. */
@@ -855,16 +1081,17 @@ li {
 
 .buehne__bild figcaption {
   margin-top: 0.85rem;
-  font-size: var(--fs-mikro);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: var(--fs-klein);
+  font-weight: 400;
+  letter-spacing: 0.01em;
   line-height: 1.55;
   color: var(--paper-schwach);
-  min-height: 2.8rem;
+  min-height: 3.2rem;
 }
 
 .buehne__bild figcaption b {
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
   color: var(--kat);
   margin-right: 0.4rem;
 }
@@ -915,6 +1142,79 @@ li {
   transform: scale(1);
 }
 
+/* ── Die Pfeile auf dem Bild ─────────────────────── */
+
+/* Ohne JS schalten sie nichts, also stehen sie auch nicht da. */
+.buehne__pfeil {
+  display: none;
+}
+
+/* Die Fusshoehe der Bildunterschrift: der Rahmen traegt Bild und Zeile,
+   die Pfeile sollen aber auf der Bildmitte sitzen, nicht auf der Mitte
+   von beidem. */
+.js-idee .buehne__rahmen {
+  --bu-fuss: 3.65rem;
+}
+
+.js-idee .buehne__pfeil {
+  position: absolute;
+  top: calc(50% - var(--bu-fuss) / 2);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  transform: translateY(-50%);
+  border: 1px solid rgba(250, 250, 250, 0.28);
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(6px);
+  color: var(--paper);
+  cursor: pointer;
+  opacity: 0.62;
+  transition:
+    opacity 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.js-idee .buehne__pfeil--zurueck {
+  left: clamp(0.6rem, 1.6vw, 1.1rem);
+}
+
+.js-idee .buehne__pfeil--vor {
+  right: clamp(0.6rem, 1.6vw, 1.1rem);
+}
+
+.js-idee .buehne__pfeil svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.js-idee .buehne__pfeil--zurueck svg {
+  transform: scaleX(-1);
+}
+
+.js-idee .buehne__rahmen:hover .buehne__pfeil {
+  opacity: 1;
+}
+
+.js-idee .buehne__pfeil:hover,
+.js-idee .buehne__pfeil:focus-visible {
+  opacity: 1;
+  background: var(--kat);
+  border-color: var(--kat);
+  color: var(--paper);
+}
+
+.js-idee .buehne__rahmen .buehne__pfeil:disabled {
+  opacity: 0.16;
+  cursor: default;
+  background: rgba(10, 10, 10, 0.55);
+  border-color: rgba(250, 250, 250, 0.28);
+  color: var(--paper);
+}
+
 /* ── Die Kette ───────────────────────────────────── */
 
 .kette {
@@ -941,9 +1241,11 @@ li {
 .kette__glied {
   position: relative;
   display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
   align-content: start;
-  gap: 0.55rem;
-  padding-top: 1rem;
+  align-items: baseline;
+  gap: 0.3rem 0.45rem;
+  padding-top: 0.7rem;
   border-top: 1px solid var(--linie-dunkel);
 }
 
@@ -967,13 +1269,13 @@ li {
 }
 
 .kette__nr {
-  font-size: var(--fs-zahl);
+  grid-column: 1;
+  font-size: calc(var(--fs-klein) * 1.2);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
   color: var(--kat);
-  margin-bottom: 0.2rem;
   transition: color 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -988,45 +1290,58 @@ li {
 }
 
 .kette__glied h3 {
-  font-size: var(--fs-titel);
+  grid-column: 2;
+  font-size: var(--fs-klein);
   font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.3;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
 }
 
 .kette__satz {
-  font-size: var(--fs-klein);
-  line-height: 1.6;
+  grid-column: 1 / -1;
+  font-size: var(--fs-mikro);
+  line-height: 1.55;
+  letter-spacing: 0;
+  text-transform: none;
   color: var(--paper-dim);
   max-width: 34ch;
-}
-
-.kette__weiter {
-  justify-self: start;
-  margin-top: 0.35rem;
-  font-size: var(--fs-klein);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.22em;
-  text-decoration-color: rgba(250, 250, 250, 0.4);
-  transition: text-decoration-color 160ms ease;
-}
-
-.kette__weiter:hover,
-.kette__weiter:focus-visible {
-  text-decoration-color: var(--kat);
 }
 
 /* Der Zeiger verrät, dass das Glied die Bühne schaltet. */
 .js-idee .kette__glied {
   cursor: pointer;
+  transition: border-color 200ms ease;
+}
+
+/* Der Hover sagt nur: hier ist etwas anklickbar. Geschaltet wird erst
+   beim Klick — sonst risse jeder Zeiger, der beim Lesen über die Kette
+   streift, die Bühne mit. Deshalb auch kein Rot: die Kategoriefarbe
+   gehört dem aktiven Glied, der Hover bleibt in Paper darunter. */
+.js-idee .kette__glied:hover {
+  border-top-color: var(--paper-schwach);
+}
+
+.js-idee .kette__glied:hover h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: rgba(250, 250, 250, 0.45);
+}
+
+.js-idee .kette__glied:hover .kette__nr {
+  color: var(--paper);
+}
+
+/* Das aktive Glied behält seine Farbe, auch unter dem Zeiger. */
+.js-idee .kette__glied.ist:hover .kette__nr {
+  color: var(--kat);
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .js-idee .buehne__bild,
   .js-idee .buehne__bild img,
+  .js-idee .buehne__pfeil,
+  .js-idee .kette__glied,
   .kette__glied::before,
   .kette__nr {
     transition: none;
@@ -1062,7 +1377,7 @@ li {
   }
 }
 
-.teile--liste li>p:last-child {
+.teile--liste li > p:last-child {
   max-width: 48ch;
 }
 
@@ -1085,7 +1400,7 @@ li {
   margin-bottom: 0.6rem;
 }
 
-.teile li>p:last-child {
+.teile li > p:last-child {
   font-size: var(--fs-klein);
   line-height: 1.6;
   color: var(--paper-dim);
@@ -1122,6 +1437,8 @@ li {
 
 .paar img {
   width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   outline-offset: -1px;
 }
 
@@ -1214,8 +1531,13 @@ li {
   margin: 0;
 }
 
+/* Die Modellfotos sind teils hoch, teils quer. In der Folge liegen sie
+   gestapelt uebereinander, deshalb brauchen sie ein gemeinsames Format,
+   sonst springt die Hoehe bei jedem Wechsel. */
 .schritt__bild img {
   width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
 }
 
 .schritt__nr {
@@ -1246,7 +1568,7 @@ li {
   margin-bottom: 0.6rem;
 }
 
-.schritt__text>p:last-child {
+.schritt__text > p:last-child {
   font-size: var(--fs-klein);
   line-height: 1.65;
   color: var(--paper-dim);
@@ -1255,6 +1577,14 @@ li {
 
 .folge__track {
   display: none;
+}
+
+/* Der Vorspann des Baukoerpers stoesst direkt an die Folge, und die
+   bringt als klebende Buehne ihre eigene Luft mit. Die volle Platte
+   darunter waere die Luft ein zweites Mal — auf schmalen Schirmen stand
+   dadurch ein leeres Band zwischen Tabelle und erstem Bild. */
+.bau .platte {
+  padding-bottom: var(--luft-klein);
 }
 
 /* Mit JS wird die Folge zur klebenden Bühne. */
@@ -1280,27 +1610,44 @@ li {
   gap: 0;
 }
 
+/* Die Textzeile bekommt die Hoehe der laengsten (--text-h, von JS
+   gemessen), die Bildzeile den Rest. Sonst verschoebe jeder Schritt mit
+   kuerzerem Text sein Bild nach unten — dann liegen die Blaetter beim
+   Wischen nicht mehr deckungsgleich. */
 .js-folge .schritt {
   position: absolute;
   inset: 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  align-content: center;
+  grid-template-rows: minmax(0, 1fr) var(--text-h, auto);
+  align-content: stretch;
   gap: 0;
 }
 
+/* Das Blatt fuellt die Bildzeile, das Bild sitzt darin unten links.
+   So begrenzt die Zeile die Hoehe — auf niedrigen Fenstern lief das Bild
+   sonst oben aus der klebenden Buehne heraus. */
 .js-folge .schritt__bild {
   grid-area: 1 / 1;
+  align-self: stretch;
+  min-height: 0;
+  display: flex;
+  align-items: center;
   opacity: 0;
   will-change: opacity, clip-path;
 }
 
+/* Frueher stand hier contain mit object-position: left bottom. Zwei der
+   acht Modellfotos sind hochkant; die belegten damit nur die halbe Breite
+   der Flaeche, waehrend der Wisch ueber die ganze Breite laeuft. Der
+   Uebergang war deshalb schon fertig, wenn der Scrollweg noch lief, und
+   blieb sichtbar stehen. Mit cover fuellt jedes Blatt dieselbe Flaeche,
+   und der Wisch braucht ueberall gleich lang. */
 .js-folge .schritt__bild img {
   width: 100%;
-  max-height: 56svh;
-  object-fit: contain;
-  object-position: left center;
-  /* bleibt auf der Spaltenkante */
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .js-folge .schritt:first-child .schritt__bild {
@@ -1309,6 +1656,7 @@ li {
 
 .js-folge .schritt__text {
   grid-area: 2 / 1;
+  align-self: start;
   opacity: 0;
   padding-top: clamp(1rem, 2.5vw, 1.6rem);
   transition: opacity 200ms cubic-bezier(0.16, 1, 0.3, 1);
@@ -1326,11 +1674,13 @@ li {
 }
 
 @media (min-width: 60rem) {
+  /* Zwei Spalten statt drei: der Titel traegt den ganzen Satz, ein
+     eigener Absatz steht nicht mehr daneben. */
   .js-folge .schritt__text {
     display: grid;
-    grid-template-columns: 7rem minmax(0, 15rem) minmax(0, 1fr);
+    grid-template-columns: 7rem minmax(0, 1fr);
     column-gap: clamp(1.5rem, 3vw, 2.5rem);
-    align-items: start;
+    align-items: baseline;
     border-top: 1px solid var(--linie-dunkel);
     padding-top: 1.1rem;
   }
@@ -1401,9 +1751,15 @@ li {
   .tabelle--drei {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  /* Vier Punkte auf zwei Spalten: zwei Reihen zu zweit lesen sich
+     ruhiger als drei plus einer allein. */
+  .tabelle--zwei {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
-.tabelle>div {
+.tabelle > div {
   padding: 1.4rem 0 1.6rem;
   border-top: 2px solid var(--red);
 }
@@ -1422,6 +1778,48 @@ li {
   max-width: 34ch;
 }
 
+/* Die Tabelle des Baukoerpers im Schnitt der Kette: duenne Linie statt
+   Balken, kleiner Titel, Satz darunter. Nur das Aussehen — hier wird
+   nichts geschaltet, also auch kein Hover und kein Zeiger. */
+.tabelle--kette {
+  gap: clamp(1.75rem, 4vw, 2.5rem) clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (min-width: 34rem) {
+  .tabelle--kette {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 62rem) {
+  .tabelle--kette {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.tabelle--kette > div {
+  display: grid;
+  align-content: start;
+  gap: 0.3rem;
+  padding: 0.7rem 0 0;
+  border-top: 1px solid var(--linie-dunkel);
+}
+
+.tabelle--kette dt {
+  font-size: var(--fs-klein);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  margin-bottom: 0;
+}
+
+.tabelle--kette dd {
+  font-size: var(--fs-mikro);
+  line-height: 1.55;
+  color: var(--paper-dim);
+  max-width: 34ch;
+}
+
 /* ══ POS 06 · Standort ═══════════════════════════════ */
 
 .masse {
@@ -1430,7 +1828,7 @@ li {
   gap: 0;
 }
 
-.masse>div {
+.masse > div {
   display: grid;
   grid-template-columns: minmax(6.5rem, 9rem) minmax(0, 1fr);
   align-items: baseline;
@@ -1439,12 +1837,12 @@ li {
   border-bottom: 1px solid var(--linie-dunkel);
 }
 
-.masse>div:first-child {
+.masse > div:first-child {
   border-top: 1px solid var(--linie-dunkel);
 }
 
 @media (min-width: 46rem) {
-  .masse>div {
+  .masse > div {
     grid-template-columns: minmax(9rem, 11rem) minmax(0, 1fr);
     gap: 0.2rem 2.5rem;
   }
@@ -1543,7 +1941,7 @@ li {
   color: var(--rot-text);
 }
 
-.stand .tabelle>div {
+.stand .tabelle > div {
   border-top-color: var(--ink);
 }
 
@@ -1656,7 +2054,7 @@ li {
   }
 }
 
-.wege>div {
+.wege > div {
   padding: 1.4rem 0 1.6rem;
   border-top: 1px solid rgba(20, 24, 29, 0.34);
   border-bottom: 1px solid rgba(20, 24, 29, 0.34);
@@ -1793,9 +2191,9 @@ li {
 }
 
 .portrait figcaption {
-  font-size: var(--fs-mikro);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: var(--fs-klein);
+  font-weight: 400;
+  letter-spacing: 0.01em;
   text-align: center;
   color: var(--paper-schwach);
 }
@@ -1840,4 +2238,470 @@ li {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-underline-offset: 0.25em;
+}
+
+/* Pos 06: die Zahlen stehen neben dem Satz, nicht darunter — sie sind
+   Beleg zum Text, keine eigene Etappe. Unter 58rem wieder untereinander. */
+.standort__satz {
+  display: grid;
+  gap: var(--luft-klein);
+}
+
+@media (min-width: 58rem) {
+  .standort__satz {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .standort__satz .masse {
+    margin-top: 0.35rem;
+  }
+}
+
+/* Pos 07 trägt nur noch eine Spalte: den Bedarf. Die Spalte behält ihre
+   Breite, statt über die ganze Platte zu laufen — sonst liest sie sich
+   wie eine Aufzählung ohne Gegenüber. */
+@media (min-width: 52rem) {
+  .bilanz--einzeln {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+/* ══ Ansage · Pos 01 ═════════════════════════════════════ */
+
+/* Der Satz, auf den die Kette hinausläuft. Er steht allein auf der Platte,
+   damit das Tippen nicht neben etwas anderem passiert. */
+.ansage {
+  margin-top: var(--luft);
+  padding-top: var(--luft-klein);
+  border-top: 1px solid var(--linie-dunkel);
+}
+
+.ansage__satz {
+  max-width: 34ch;
+  font-size: var(--fs-setzung);
+  font-weight: 600;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+/* Waehrend getippt wird, darf die Zeile nicht springen: der Platz fuer den
+   fertigen Satz wird vorher reserviert. --zeilen setzt das Skript. */
+.ansage__satz--tippt::after {
+  content: "";
+  display: inline-block;
+  width: 0.08em;
+  height: 0.9em;
+  margin-left: 0.06em;
+  vertical-align: -0.06em;
+  background: var(--red);
+  animation: blinken 1s steps(2, start) infinite;
+}
+
+@keyframes blinken {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ansage__satz--tippt::after {
+    animation: none;
+  }
+}
+
+/* ══ Modulares Mehrwerk · Pos 03 ═════════════════════════ */
+
+.modular {
+  margin-bottom: var(--luft);
+}
+
+/* Seitenverkehrt zu .lauf: hier klebt das Bild rechts, der Text laeuft
+   links. Nur ab zwei Spalten — darunter steht ohnehin alles untereinander. */
+@media (min-width: 52rem) {
+  .lauf--kehrt > .wechsel {
+    order: 2;
+  }
+}
+
+.modular__text {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(3rem, 12vh, 9rem);
+}
+
+.modular__text li p {
+  font-size: calc(var(--fs-setzung) * 0.62);
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  color: var(--yellow);
+  max-width: 26ch;
+  opacity: 0.34;
+  transition: opacity 0.35s ease;
+}
+
+.modular__text li.ist p {
+  opacity: 1;
+}
+
+/* Ohne JS traegt kein Punkt die Markierung — dann muessen alle lesbar sein. */
+html:not(.js-wechsel) .modular__text li p {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modular__text li p {
+    opacity: 1;
+    transition: none;
+  }
+}
+
+/* ══ Formate · Pos 03 ════════════════════════════════════ */
+
+.formate__liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--linie-dunkel);
+}
+
+.formate__liste li {
+  padding: 1.1rem 0 1.2rem;
+  border-bottom: 1px solid var(--linie-dunkel);
+  display: grid;
+  grid-template-columns: minmax(3.5rem, auto) minmax(0, 1fr);
+  gap: 0.25rem 1.25rem;
+}
+
+.formate__nr {
+  grid-row: 1 / span 2;
+  font-size: var(--fs-klein);
+  font-variant-numeric: tabular-nums;
+  color: var(--kat, var(--paper-dim));
+  padding-top: 0.15em;
+}
+
+.formate__liste h4 {
+  margin: 0;
+  font-size: var(--fs-titel);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.formate__liste li > p:last-child {
+  font-size: var(--fs-klein);
+  line-height: 1.6;
+  color: var(--paper-dim);
+  max-width: 52ch;
+}
+
+.formate__fuss {
+  margin-top: 1.1rem;
+  font-size: var(--fs-mikro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+}
+
+/* ══ Das digitale Mehrwerk · Pos 04 ══════════════════════ */
+
+.digital {
+  margin-top: var(--luft);
+}
+
+.digital .lead {
+  margin-top: 1.1rem;
+  max-width: 54ch;
+}
+
+.digital .tabelle {
+  margin-top: var(--luft-klein);
+}
+
+/* .unter war bisher nur in Pos 07 gesetzt; die Zwischenueberschrift wird
+   inzwischen in 03, 04 und 05 gebraucht, also gilt sie allgemein. Die
+   hellere Fassung fuer den Papiergrund steht weiter oben bei .stand und
+   sticht diese hier per Spezifitaet. */
+.unter {
+  margin: 0 0 var(--luft-klein);
+  font-size: var(--fs-titel);
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--linie-dunkel);
+}
+
+/* ══ Impressum ═══════════════════════════════════════════ */
+
+/* Pflichtangabe, kein Gestaltungsstueck: eine Spalte, keine Auszeichnung
+   ausser den Zwischenueberschriften. Erbt Satzbreite und Rhythmus von
+   .person, damit die Anhaenge zusammengehoeren. */
+.recht {
+  padding-inline: max(var(--rand), (100% - var(--weit)) / 2);
+  padding-block: clamp(3rem, 7vw, 5.5rem) var(--luft);
+}
+
+.recht h1 {
+  font-size: var(--fs-kopf);
+}
+
+.recht__text {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 62ch;
+  margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.recht__text p {
+  color: var(--paper-dim);
+  line-height: 1.7;
+}
+
+.recht__text h2 {
+  font-size: var(--fs-titel);
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+  margin-bottom: -0.4rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--linie-dunkel);
+  color: var(--paper);
+}
+
+.recht__text a {
+  color: var(--paper);
+  text-underline-offset: 0.2em;
+}
+
+/* Die offenen Stellen sollen wehtun, solange sie offen sind. */
+.fehlt {
+  background: var(--red);
+  color: var(--paper);
+  padding: 0.05em 0.4em;
+  font-weight: 600;
+}
+
+/* Die Formatliste bekommt keine Markierung: die Bilder daneben sind
+   Beispiele fuer das, was hier stattfindet, und nicht einzelnen Punkten
+   zugeordnet. Ein mitlaufendes Highlight wuerde eine Zuordnung behaupten,
+   die es nicht gibt. */
+
+/* ══ Nachtrag: Ausschnitt, Luft, klebende Bloecke ════════ */
+
+/* 01.d zeigt den Bildschirm in der Wand. Der sitzt unten im Bild, beim
+   Beschnitt auf 16:9 fiel er sonst heraus. */
+.buehne__bild--unten img {
+  object-position: bottom;
+}
+
+/* Die Listen in 02 und 04 liefen bis zum Rand der Position: der letzte
+   Punkt stand noch nicht mittig, da war die Sektion schon zu Ende und der
+   Blick sprang weiter. Der Nachlauf gibt ihm seinen Auftritt. */
+@media (min-width: 62rem) {
+  .teile--liste {
+    padding-bottom: 34vh;
+  }
+}
+
+/* Modulares Mehrwerk: ein Satz fuellt einen Schirm. So steht nie mehr als
+   einer im Bild, das Bild daneben hat Zeit, und unten schaut der naechste
+   schon herein. */
+@media (min-width: 62rem) {
+  .modular__text {
+    gap: 0;
+  }
+
+  .modular__text li {
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .modular__text li:last-child {
+    min-height: 60vh;
+  }
+}
+
+/* Wenn direkt Text folgt, braucht die Zwischenueberschrift oben Luft und
+   unten weniger. */
+.unter--eng {
+  margin-top: var(--luft);
+  margin-bottom: 1.4rem;
+}
+
+/* ══ Die Screens des digitalen Mehrwerks ═════════════════ */
+
+.schirme {
+  margin-top: var(--luft-klein);
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+@media (min-width: 56rem) {
+  .schirme {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+    /* stretch statt start: beide Spalten bekommen dieselbe Hoehe, naemlich
+       die der langen Seite. Erst dadurch hat die Reihe daneben etwas zu
+       verteilen. */
+    align-items: stretch;
+  }
+
+  /* Kein gap: auto in CSS, aber space-between tut genau das: der Rest, der
+     nach den drei Bildern uebrig bleibt, wird gleichmaessig auf die beiden
+     Luecken verteilt. Oben und unten schliessen die Spalten damit buendig
+     mit der langen Seite ab. Das gap bleibt als Untergrenze stehen, falls
+     die Bilder einmal hoeher sind als die Spalte. */
+  .schirme__reihe {
+    justify-content: space-between;
+  }
+}
+
+.schirme figure {
+  margin: 0;
+}
+
+.schirme img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--linie-dunkel);
+}
+
+/* Die lange Seite laeuft ueber ihre volle Hoehe: abgeschnitten sah sie aus
+   wie ein Fehler, nicht wie eine Absicht. */
+.schirme__lang img {
+  height: auto;
+}
+
+.schirme figcaption {
+  margin-top: 0.7rem;
+  font-size: var(--fs-klein);
+  line-height: 1.6;
+  color: var(--paper-schwach);
+}
+
+.schirme__reihe {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* ══ 07: der Bedarf steht neben dem Vorspann ═════════════ */
+
+.stand__satz {
+  margin-top: var(--luft-klein);
+  display: grid;
+  gap: var(--luft-klein);
+}
+
+@media (min-width: 58rem) {
+  .stand__satz {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .stand__satz .lead {
+    margin-top: 0;
+  }
+
+  .stand__satz .bilanz {
+    margin-top: 0;
+  }
+
+  /* In der Spalte steht der Bedarf einspaltig, nicht noch einmal geteilt. */
+  .stand__satz .bilanz--einzeln {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Die Zeichenspur der Ansage. Der Satz steht vollstaendig da, getippt wird
+   nur die Sichtbarkeit — deshalb ruckt beim Schreiben nichts. */
+.ansage__spur span {
+  visibility: hidden;
+}
+
+/* Fuer Vorlesegeraete, nicht fuers Auge. */
+.nur-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Die Axonometrien sind freigestellt und sollen auf dem Grund stehen, nicht
+   in einem weissen Kasten. Also nicht beschneiden, sondern einpassen. */
+.modular .wechsel__bild img {
+  object-fit: contain;
+  aspect-ratio: 16 / 10;
+}
+
+/* ══ Nachtrag: Pos 05 als Absatz, laengere Folge-Titel ═══ */
+
+/* Der Absatz, der die vier Eigenschaften zusammenfasst. Etwas breiter als
+   ein Listentext, aber nicht so breit wie der Vorspann darueber. */
+.fliess__satz {
+  max-width: 64ch;
+  font-size: var(--fs-body);
+  line-height: 1.75;
+  color: var(--paper-dim);
+}
+
+/* Die Titel der Folge tragen jetzt den ganzen Satz. Damit sie nicht ueber
+   die halbe Breite laufen, bekommen sie ein Mass und etwas engeren Satz. */
+.schritt__text h3 {
+  max-width: 52ch;
+  line-height: 1.28;
+  text-wrap: balance;
+  margin-bottom: 0;
+}
+
+/* ══ Folge: Bild und Text nebeneinander ══════════════════ */
+
+/* Bis hierher lagen Bild und Text uebereinander, die Textzeile bekam von
+   JS eine feste Hoehe (--text-h), damit die Blaetter deckungsgleich
+   blieben. Nebeneinander braucht es das nicht mehr: das Bild fuellt die
+   linke Spalte, der Text steht rechts auf halber Hoehe. */
+@media (min-width: 60rem) {
+  .js-folge .schritt {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    column-gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+  }
+
+  .js-folge .schritt__bild {
+    grid-area: 1 / 1;
+    align-self: stretch;
+  }
+
+  .js-folge .schritt__text {
+    grid-area: 1 / 2;
+    align-self: center;
+    display: block;
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .js-folge .schritt__nr {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.4rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .js-folge .schritt__text h3 {
+    max-width: 22ch;
+  }
+
+  /* Der Balken unter der Buehne stand als Fortschritt unter dem Text.
+     Nebeneinander gehoert er unter beides. */
+  .js-folge .folge__buehne {
+    justify-content: center;
+  }
 }

@@ -14,3 +14,10 @@ desktop.ini
 
 # Werkzeug-Zwischenstand, gehört nicht zur Website
 .impeccable/
+
+# Figma-Token, gehoert niemals ins Repo
+.figma-token
+redaktion/.figma-token
+
+# Redaktion: Arbeitsfassung der Texte, gehoert nicht auf die oeffentliche Seite
+redaktion/
